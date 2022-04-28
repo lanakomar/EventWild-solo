@@ -131,3 +131,5 @@ npx dotenv sequelize db:create
     username: 'Spidey',
     password: 'password'
   })
+
+21. Implement validation of the request body
