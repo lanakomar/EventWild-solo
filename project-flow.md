@@ -107,3 +107,5 @@ npx dotenv sequelize db:create
 
     Check if users were created
     psql <database name> -c 'SELECT * FROM "Users"'
+
+    In User model define model scopes
