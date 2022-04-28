@@ -133,3 +133,12 @@ npx dotenv sequelize db:create
   })
 
 21. Implement validation of the request body
+
+
+
+Frontend:
+
+1. Set up Redux
+   Create frontend folder
+   npx create-react-app . --template @appacademy/react-redux-v17 --use-npm
+   npm install js-cookie
