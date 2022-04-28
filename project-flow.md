@@ -152,13 +152,6 @@ window.csrfFetch('/api/test', {
 }).then(res => res.json()).then(data => console.log(data));
 
 
-window.store.dispatch(window.sessionActions.login({
-  credential: 'Demo',
-  password: 'demoPassword'
-}));
-
-
-window.csrfFetch('/api/session', {
-  method: 'POST',
-  body: JSON.stringify({ credential: 'Demo', password: 'demoPassword' })
-}).then(res => res.json()).then(data => console.log(data));
+Demo credentials:
+demo@user.io
+demoPassword
