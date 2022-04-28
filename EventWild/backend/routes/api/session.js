@@ -28,7 +28,7 @@ router.post('/',
         await setTokenCookie(res, user);
 
         //return JSON response with user data
-        return res.json({user});
+        return res.json({ user });
     })
 );
 

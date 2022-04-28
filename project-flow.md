@@ -124,3 +124,10 @@ npx dotenv sequelize db:create
     Logout: DELETE /api/session
     Signup: POST /api/users
     Get session user: GET /api/session
+
+
+ ({
+    email: 'spidey@spider.man,
+    username: 'Spidey',
+    password: 'password'
+  })
