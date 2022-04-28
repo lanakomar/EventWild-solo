@@ -142,3 +142,11 @@ Frontend:
    Create frontend folder
    npx create-react-app . --template @appacademy/react-redux-v17 --use-npm
    npm install js-cookie
+
+2. Set up proxy
+
+
+window.csrfFetch('/api/test', {
+  method: 'POST',
+  body: JSON.stringify({ credential: 'Demo', password: 'demoPassword' })
+}).then(res => res.json()).then(data => console.log(data));
