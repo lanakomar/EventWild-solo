@@ -43,4 +43,20 @@ router.delete('/',
     }
 );
 
+// Restore session user
+router.get('/',
+    restoreUser,
+    (req, res) => {
+        const { user } = req;
+        if (user) {
+            //if there is a session user
+            //it will be returned in the response
+            return res.json({ user: user.toSafeObject() });
+
+            //if there is no session user
+            //empty object will be returned
+        } else return res.json({});
+    }
+);
+
 module.exports = router;
