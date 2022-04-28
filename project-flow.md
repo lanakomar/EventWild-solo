@@ -82,3 +82,28 @@ npx dotenv sequelize db:create
     404 error handler
     sequelize error handler
     error formatter
+
+20. User Authentication:
+    Create Users table
+    npx sequelize model:generate --name User --attributes username:string,email:string,hashedPassword:string
+
+    Configure migration file and model file, migrate
+    npx dotenv sequelize db:migrate
+
+    Undo migration:
+    npx dotenv sequelize db:migrate:undo
+
+    Check in the psql:
+    psql <database name> -c '\d "Users"'
+
+    Generate seeds file for Users table
+    npx sequelize seed:generate --name usersData
+
+    Seed the db
+    npx dotenv sequelize db:seed:all
+
+    Undo seeding
+    npx dotenv sequelize db:seed:undo:all
+
+    Check if users were created
+    psql <database name> -c 'SELECT * FROM "Users"'
