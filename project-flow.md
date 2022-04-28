@@ -109,3 +109,15 @@ npx dotenv sequelize db:create
     psql <database name> -c 'SELECT * FROM "Users"'
 
     In User model define model scopes
+    Create User.prototype methods: toSafeObject()
+                                   validatePassword(password)
+                                   getCurrentUserById(id)
+                                   login
+                                   signup
+    Create utils folder, iside - auth.js
+    In auth.js: setTokenCookie
+                restoreUser
+                requireAuth
+
+20. Create user auth api routes:
+    Create session.js file in routes/api folder
