@@ -73,3 +73,12 @@ npx dotenv sequelize db:create
 
 17. Create api folder inside routes,
     inside api folder - index.js
+    Create router in inidex.js, export it
+
+18. In routes/index.js
+   connect to the api router
+
+19. Error Handling:
+    404 error handler
+    sequelize error handler
+    error formatter
