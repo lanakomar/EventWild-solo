@@ -70,3 +70,6 @@ npx dotenv sequelize db:create
     "start:development": "nodemon -r dotenv/config ./bin/www",
     "start:production": "node ./bin/www"
     }
+
+17. Create api folder inside routes,
+    inside api folder - index.js
