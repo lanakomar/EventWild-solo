@@ -120,4 +120,7 @@ npx dotenv sequelize db:create
                 requireAuth
 
 20. Create user auth api routes:
-    Create session.js file in routes/api folder
+    Login: POST /api/session
+    Logout: DELETE /api/session
+    Signup: POST /api/users
+    Get session user: GET /api/session

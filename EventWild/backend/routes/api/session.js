@@ -32,4 +32,15 @@ router.post('/',
     })
 );
 
+// Log out
+router.delete('/',
+    (_req, res) => {
+        //remove the token cookie from the response
+        res.clearCookie('token');
+
+        //return a JSON response with a success message
+        return res.json({ message: 'success' });
+    }
+);
+
 module.exports = router;
