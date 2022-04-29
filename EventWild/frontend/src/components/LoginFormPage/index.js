@@ -35,6 +35,7 @@ const LoginFormPage = () => {
                 </ul>
                 <label htmlFor='email'>Email</label>
                 <input
+                    autoComplete="false"
                     type='text'
                     id='email'
                     name='email'
@@ -43,6 +44,7 @@ const LoginFormPage = () => {
                 />
                 <label htmlFor='password'>Password</label>
                 <input
+                    autoComplete="false"
                     type='password'
                     id='password'
                     name='password'
