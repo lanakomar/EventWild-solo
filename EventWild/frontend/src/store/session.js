@@ -18,6 +18,8 @@ const removeUser = () => {
     };
 };
 
+
+
 //thunk action for logging in
 export const login = (user) => async (dispatch) => {
     const { credential, password } = user;
