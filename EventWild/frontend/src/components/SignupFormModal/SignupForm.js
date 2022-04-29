@@ -73,7 +73,7 @@ function SignupForm() {
                     required
                 />
             </label>
-            <button type="submit">Sign Up</button>
+            <button className="btn-nav" type="submit">Sign Up</button>
         </form>
     );
 }

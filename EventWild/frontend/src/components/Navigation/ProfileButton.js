@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
+
 import * as sessionActions from '../../store/session';
+import './Navigation.css';
+
 
 function ProfileButton({ user }) {
     const dispatch = useDispatch();
@@ -11,17 +14,9 @@ function ProfileButton({ user }) {
         setShowMenu(true);
     };
 
-    useEffect(() => {
-        if (!showMenu) return;
-
-        const closeMenu = () => {
-            setShowMenu(false);
-        };
-
-        document.addEventListener('click', closeMenu);
-
-        return () => document.removeEventListener("click", closeMenu);
-    }, [showMenu]);
+    const closeMenu = () => {
+        setShowMenu(false);
+    };
 
     const logout = (e) => {
         e.preventDefault();
@@ -30,18 +25,23 @@ function ProfileButton({ user }) {
 
     return (
         <>
-            <button onClick={openMenu}>
-                <i className="fas fa-user-circle" />
-            </button>
-            {showMenu && (
-                <ul className="profile-dropdown">
-                    <li>{user.username}</li>
-                    <li>{user.email}</li>
-                    <li>
-                        <button onClick={logout}>Log Out</button>
-                    </li>
-                </ul>
-            )}
+        <div className="loggedin-container"
+                onMouseEnter={openMenu}
+                onMouseLeave={closeMenu}>
+            <div className="loggedin-user">
+                <button className="user-btn" >
+                    <i className="fa-solid fa-user-large" />
+                </button>
+                    <p>Hello, {user.username}! <span>&#8964;</span></p>
+                </div>
+                {showMenu && (
+                    <ul className="profile-dropdown">
+                        <li>
+                            <button className="btn-logout" onClick={logout}>Log Out</button>
+                        </li>
+                    </ul>
+                )}
+            </div>
         </>
     );
 }

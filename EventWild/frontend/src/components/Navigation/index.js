@@ -34,7 +34,7 @@ const Navigation = (isLoaded) => {
                 <ul>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>
-                <NavLink to="/login" onClick={demoLogin}>Demo user</NavLink>
+                <button className="btn-nav" to="/login" onClick={demoLogin}>Demo user</button>
                 <LoginFormModal />
                 <SignupFormModal />
             </>
@@ -46,7 +46,9 @@ const Navigation = (isLoaded) => {
     return (
         <nav>
             <NavLink exact to="/">Home</NavLink>
-            {isLoaded && sessionLinks}
+            <div>
+                {isLoaded && sessionLinks}
+            </div>
         </nav>
     )
 }
