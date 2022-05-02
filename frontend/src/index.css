@@ -1,1 +1,5 @@
 /* TODO Add site wide styles */
+body {
+  background-color: rgb(255, 250, 243);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

@@ -95,6 +95,7 @@ module.exports = (sequelize, DataTypes) => {
     };
 
     User.belongsToMany(models.Event, columnMapping);
+
     User.hasMany(models.Event, { foreignKey: "hostId" });
   };
 
