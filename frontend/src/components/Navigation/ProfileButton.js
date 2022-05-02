@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch } from 'react-redux';
+import { NavLink } from "react-router-dom";
 
 import * as sessionActions from '../../store/session';
 import './Navigation.css';
@@ -25,13 +26,16 @@ function ProfileButton({ user }) {
 
     return (
         <>
-        <div className="loggedin-container"
+            <div className="create-event-container">
+                <NavLink to="/create-event">Create event</NavLink>
+            </div>
+            <div className="loggedin-container"
                 onMouseEnter={openMenu}
                 onMouseLeave={closeMenu}>
-            <div className="loggedin-user">
-                <button className="user-btn" >
-                    <i className="fa-solid fa-user-large" />
-                </button>
+                <div className="loggedin-user">
+                    <button className="user-btn" >
+                        <i className="fa-solid fa-user-large" />
+                    </button>
                     <p>Hello, {user.username}! <span>&#8964;</span></p>
                 </div>
                 {showMenu && (

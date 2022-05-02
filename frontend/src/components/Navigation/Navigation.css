@@ -26,7 +26,7 @@ nav > div {
 
 .btn-nav:hover {
     cursor: pointer;
-    background-color: rgb(202, 211, 220);
+    background-color: rgb(248, 247, 250);
     color: rgb(61, 100, 255);
     border-radius: 5px;
 }
@@ -34,6 +34,25 @@ nav > div {
 .btn-nav a {
     text-decoration: none;
     color: black;
+}
+
+.create-event-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 10px;
+    height: 100%;
+}
+
+.create-event-container a {
+    text-decoration: none;
+    color: black;
+}
+
+.create-event-container a:hover {
+    color:rgb(61, 100, 255)
 }
 
 .loggedin-container {
@@ -45,10 +64,17 @@ nav > div {
 }
 
 .loggedin-container:hover,
-.profile-dropdown li:hover {
-    background-color: rgba(202, 211, 220, 0.3);
+.profile-dropdown li:hover,
+.create-event-container:hover {
+    cursor: pointer;
+    background-color: rgb(248, 247, 250);;
     border-radius: 5px;
 }
+
+.profile-dropdown li button:hover {
+    cursor: pointer;
+}
+
 
 .loggedin-user {
     display: flex;
