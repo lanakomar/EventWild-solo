@@ -27,7 +27,8 @@ function ProfileButton({ user }) {
     return (
         <>
             <div className="create-event-container">
-                <NavLink to="/create-event">Create event</NavLink>
+                <i className="fa-solid fa-plus"></i>
+                <NavLink to="/events/new">Create event</NavLink>
             </div>
             <div className="loggedin-container"
                 onMouseEnter={openMenu}

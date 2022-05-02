@@ -47,7 +47,9 @@ nav > div {
     height: 100%;
 }
 
+
 .create-event-container a {
+    margin-top: 3px;
     text-decoration: none;
     color: black;
 }
@@ -61,7 +63,7 @@ nav > div {
     flex-direction: column;
     height: 100%;
     box-sizing: border-box;
-    width: 200px;
+    width: 220px;
 }
 
 .loggedin-container:hover,
