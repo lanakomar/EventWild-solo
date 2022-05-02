@@ -44,6 +44,10 @@ app.use(
 // Connect all the routes
 app.use(routes);
 
+// Serve all the images
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Catch unhandled requests and forward to error handler.
 app.use((_req, _res, next) => {
     const err = new Error("The requested resource couldn't be found.");
     err.title = "Resource Not Found";
