@@ -181,8 +181,8 @@ Event.belongsTo(models.User, { foreignKey: "hostId" });
 User.hasMany(models.Event, { foreignKey: "hostId" });
 
 
-Event.hasMany(models.Category, {foreignKey: "categoryId"});
-Category.belongsTo(models.Event, {foreignKey: "categoryId"});
+Category.hasMany(models.Event, {foreignKey: "categoryId"});
+Event.belongsTo(models.Category, {foreignKey: "categoryId"});
 
 
 const columnMapping = {
@@ -214,6 +214,8 @@ npx sequelize seed:generate --name ticketData
 //update all the seed files with seed data
 
 npx dotenv sequelize db:seed:all
+npx dotenv sequelize db:seed:undo:all
+
 
 
 
@@ -640,7 +642,7 @@ Event seed data:
     date: '2022-05-13',
     img: '/images/YmxpbmsgMTgwVFJVRSAoVHJpYnV0ZSB0byBCbGluayAxODIpIExJVkUgYXQgUmV0cm8gSnVua2ll.jpeg',
     capacity: 140,
-  },
+  }
 ]
 
 
@@ -689,45 +691,251 @@ Category data:
 Ticket data
 
 
-[
-  { hostId: 2, eventId: 1 },
-  { hostId: 2, eventId: 2 },
-  { hostId: 3, eventId: 3 },
-  { hostId: 4, eventId: 4 },
-  { hostId: 2, eventId: 5 },
-  { hostId: 2, eventId: 6 },
-  { hostId: 3, eventId: 7 },
-  { hostId: 1, eventId: 8 },
-  { hostId: 2, eventId: 9 },
-  { hostId: 3, eventId: 10 },
-  { hostId: 1, eventId: 11 },
-  { hostId: 2, eventId: 12 },
-  { hostId: 3, eventId: 13 },
-  { hostId: 2, eventId: 14 },
-  { hostId: 3, eventId: 15 },
-  { hostId: 3, eventId: 16 },
-  { hostId: 4, eventId: 17 },
-  { hostId: 1, eventId: 18 },
-  { hostId: 4, eventId: 19 },
-  { hostId: 4, eventId: 20 },
-  { hostId: 1, eventId: 21 },
-  { hostId: 1, eventId: 22 },
-  { hostId: 2, eventId: 23 },
-  { hostId: 4, eventId: 24 },
-  { hostId: 1, eventId: 25 },
-  { hostId: 1, eventId: 26 },
-  { hostId: 3, eventId: 27 },
-  { hostId: 3, eventId: 28 },
-  { hostId: 4, eventId: 29 },
-  { hostId: 1, eventId: 30 },
-  { hostId: 1, eventId: 31 },
-  { hostId: 1, eventId: 32 },
-  { hostId: 1, eventId: 33 },
-  { hostId: 4, eventId: 34 },
-  { hostId: 3, eventId: 35 },
-  { hostId: 3, eventId: 36 },
-  { hostId: 1, eventId: 37 },
-  { hostId: 2, eventId: 38 },
-  { hostId: 1, eventId: 39 },
-  { hostId: 3, eventId: 40 },
-]
+[{
+    hostId: 1,
+    eventId: 1,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 2,
+    eventId: 2,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 2,
+    eventId: 3,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 2,
+    eventId: 4,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 2,
+    eventId: 5,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 4,
+    eventId: 6,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 1,
+    eventId: 7,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 1,
+    eventId: 8,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 4,
+    eventId: 9,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 4,
+    eventId: 10,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 2,
+    eventId: 11,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 1,
+    eventId: 12,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 1,
+    eventId: 13,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 4,
+    eventId: 14,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 3,
+    eventId: 15,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 2,
+    eventId: 16,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 1,
+    eventId: 17,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 2,
+    eventId: 18,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 2,
+    eventId: 19,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 4,
+    eventId: 20,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 3,
+    eventId: 21,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 2,
+    eventId: 22,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 4,
+    eventId: 23,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 3,
+    eventId: 24,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 4,
+    eventId: 25,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 4,
+    eventId: 26,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 3,
+    eventId: 27,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 4,
+    eventId: 28,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 1,
+    eventId: 29,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 2,
+    eventId: 30,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 2,
+    eventId: 31,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 4,
+    eventId: 32,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 4,
+    eventId: 33,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 2,
+    eventId: 34,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 4,
+    eventId: 35,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 3,
+    eventId: 36,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 3,
+    eventId: 37,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 1,
+    eventId: 38,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 1,
+    eventId: 39,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  },
+  {
+    hostId: 2,
+    eventId: 40,
+    createdAt: 2022-05-02T16:25:16.083Z,
+    updatedAt: 2022-05-02T16:25:16.083Z
+  }
+
+
+
+
+
+
+
+to see error logs in sequelize logs:  in config - database.js - development: logging: true
