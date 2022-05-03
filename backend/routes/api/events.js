@@ -2,11 +2,14 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 const mime = require('mime');
 
-const db = require('../../db/models')
+const db = require('../../db/models');
+const eventValidattion = require('../../validations/event');
 
 const router = express.Router();
 
-router.post('/', asyncHandler (async (req, res) => {
+router.post('/',
+ eventValidattion.validateCreate,
+ asyncHandler (async (req, res) => {
     const { name, description, location, date, capacity, categoryId, hostId, type } = req.body;
     const imgType =  mime.getExtension(type);
 

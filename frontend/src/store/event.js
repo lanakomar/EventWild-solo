@@ -1,4 +1,5 @@
 import { csrfFetch } from './csrf';
+import { ValidationError } from '../utils/validationError';
 
 const LOAD_EVENTS = 'home/LOAD';
 const LOAD_CATEGORIES = 'event/LOAD_CATEGORIES';
@@ -21,7 +22,6 @@ const addEvent = (event) => ({
 
 export const getEvents = () => async dispatch => {
     const response = await fetch('/api/');
-    console.log("get events sent to db %%%%%%%")
     if (response.ok) {
         const list = await response.json();
         dispatch(loadEvents(list));
@@ -38,18 +38,41 @@ export const getCategories = () => async dispatch => {
 };
 
 export const createEvent = (payload) => async dispatch => {
-
-    const response = await csrfFetch('/api/events',{
-        method: "POST",
-        body: JSON.stringify(payload)
-    });
-
-    if (response.ok) {
+    try {
+        const response = await csrfFetch('/api/events', {
+            method: "POST",
+            body: JSON.stringify(payload)
+        });
         const event = await response.json();
 
         dispatch(addEvent(event));
         return event;
+
+    } catch (response) {
+        if (!response.ok) {
+            let error;
+            if (response.status === 422) {
+                error = await response.json();
+                throw new ValidationError(error.errors, response.statusText);
+            }
+            else {
+                let errorJSON;
+                error = await response.text();
+                try {
+                    // Check if the error is JSON, i.e., from the Pokemon server. If so,
+                    // don't throw error yet or it will be caught by the following catch
+                    errorJSON = JSON.parse(error);
+                }
+                catch {
+                    // Case if server could not be reached
+                    throw new Error(error);
+                }
+                throw new Error(`${errorJSON.title}: ${errorJSON.message}`);
+            }
+        }
     }
+
+
 };
 
 
@@ -86,13 +109,13 @@ const eventReducer = (state = initialState, action) => {
                 newState.eventList.push(action.event)
                 return newState;
             }
-                return {
-                    ...state,
-                    [action.event.id]: {
-                        ...state[action.event.id],
-                        ...action.event
-                    }
-                };
+            return {
+                ...state,
+                [action.event.id]: {
+                    ...state[action.event.id],
+                    ...action.event
+                }
+            };
         default:
             return state;
     }

@@ -17,7 +17,8 @@
     border: 1px solid rgba(202, 211, 220, 0.6);
     border-radius: 7px;
     box-shadow: 0 0 10px black;
-    padding: 40px;
+    width: 450px;
+    padding: 50px 100px;
 }
 
 form > div {
@@ -45,10 +46,6 @@ form .button-container {
     justify-content: space-between;
 }
 
-/* .button-container button {
-    width: fit-content;
-} */
-
 form .file-input input {
     height: 40px;
 }
@@ -64,4 +61,12 @@ form .file-input input::-webkit-file-upload-button {
     background-color: rgba(202, 211, 220, 0.3);
     border-radius: 5px;
     border: 1px solid rgba(202, 211, 220, 0.6);
+}
+
+.button:hover,
+::-webkit-file-upload-button:hover {
+    cursor: pointer;
+    background-color: rgb(202, 211, 220);
+    color: rgb(61, 100, 255);
+    opacity: 1;
 }

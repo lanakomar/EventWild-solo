@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+
 import './EventForm.css'
-
-
+import { ValidationError } from '../../utils/validationError';
+import ErrorMessage from '../ErrorMessage';
 import { getCategories, createEvent } from '../../store/event'
 
 const EventForm = () => {
+    const [errorMessages, setErrorMessages] = useState({});
+
     const dispatch = useDispatch();
     const history = useHistory();
     const [name, setName] = useState("");
@@ -37,7 +40,7 @@ const EventForm = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        const type = img.type;
+        const type = img && img.type;
         const toBase64 = file => new Promise((resolve, reject) => {
             const reader = new FileReader();
             reader.readAsDataURL(file);
@@ -51,13 +54,24 @@ const EventForm = () => {
             location,
             date,
             capacity,
-            img: await toBase64(img),
+            img: img ? await toBase64(img) : null,
             categoryId: category,
             hostId: user.id,
             type
         };
 
-        let createdEvent = await dispatch(createEvent(payload));
+        let createdEvent;
+        try {
+            createdEvent = await dispatch(createEvent(payload));
+        } catch (error) {
+            console.log(error);
+            if (error instanceof ValidationError) {
+                setErrorMessages(error.errors);
+            } else {
+                setErrorMessages({ overall: error.toString().slice(7) });
+            }
+        }
+
 
         if (createdEvent) {
             history.push(`/events/${createdEvent.id}`)
@@ -70,6 +84,7 @@ const EventForm = () => {
 
     return (
         <div className='form-page'>
+            <ErrorMessage message={errorMessages.overall} />
             <form encType="multipart/form-data" onSubmit={onSubmit}>
                 <div>
                     <label htmlFor="name">Event Name</label>
@@ -80,11 +95,13 @@ const EventForm = () => {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                     />
+                    <ErrorMessage label={"Name"} message={errorMessages.name} />
                 </div>
                 <div>
-                    <label htmlFor="category">Event Category</label>
+                    <label htmlFor="categoryId">Event Category</label>
                     <select
-                        id="category"
+                        name="categoryId"
+                        id="categoryId"
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}
                     >
@@ -100,6 +117,7 @@ const EventForm = () => {
                             )
                         })}
                     </select>
+                    <ErrorMessage label={"Category"} message={errorMessages.categoryId} />
                 </div>
                 <div>
                     <label htmlFor="description">Event Description</label>
@@ -109,6 +127,7 @@ const EventForm = () => {
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                     />
+                    <ErrorMessage label={"Description"} message={errorMessages.description} />
                 </div>
                 <div>
                     <label htmlFor="location">Event Location</label>
@@ -119,6 +138,7 @@ const EventForm = () => {
                         value={location}
                         onChange={(e) => setLocation(e.target.value)}
                     />
+                    <ErrorMessage label={"Location"} message={errorMessages.location} />
                 </div>
                 <div>
                     <label htmlFor="date">Event Date</label>
@@ -129,6 +149,7 @@ const EventForm = () => {
                         value={date}
                         onChange={(e) => setDate(e.target.value)}
                     />
+                    <ErrorMessage label={"Date"} message={errorMessages.date} />
                 </div>
                 <div>
                     <label htmlFor="capacity">Capacity</label>
@@ -140,6 +161,7 @@ const EventForm = () => {
                         value={capacity}
                         onChange={(e) => setCapacity(e.target.value)}
                     />
+                    <ErrorMessage label={"Capacity"} message={errorMessages.capacity} />
                 </div>
                 <div className='file-input'>
                     <label htmlFor="img">Add Event Image</label>
@@ -149,6 +171,7 @@ const EventForm = () => {
                         name="img"
                         onChange={(e) => setImg(e.target.files[0])}
                     />
+                    <ErrorMessage label={"Image"} message={errorMessages.img} />
                 </div>
                 <div className='button-container'>
                     <button className="button" type='submit'>Create Event</button>
