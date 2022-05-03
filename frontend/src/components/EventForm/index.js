@@ -64,7 +64,6 @@ const EventForm = () => {
         try {
             createdEvent = await dispatch(createEvent(payload));
         } catch (error) {
-            console.log(error);
             if (error instanceof ValidationError) {
                 setErrorMessages(error.errors);
             } else {

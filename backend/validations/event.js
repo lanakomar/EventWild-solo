@@ -37,7 +37,7 @@ const date = check('date')
     .withMessage('Please, enter event date')
     .custom(date => {
         let today = new Date();
-        let enteredDate = new Date(dateHike);
+        let enteredDate = new Date(date);
         if (enteredDate < today) {
             throw Error('Date of event cannot be in the past');
         }

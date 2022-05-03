@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
 import Footer from "./components/Footer";
 import EventForm from "./components/EventForm";
+import EventPage from "./components/EventPage";
 
 function App() {
     const dispatch = useDispatch();
@@ -24,6 +25,9 @@ function App() {
                 </Route>
                 <Route path="/events/new">
                     <EventForm />
+                </Route>
+                <Route path="/events/:eventId">
+                    <EventPage />
                 </Route>
             </Switch>
             <Footer />

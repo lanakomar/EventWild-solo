@@ -32,7 +32,8 @@ function ProfileButton({ user }) {
             </div>
             <div className="loggedin-container"
                 onMouseEnter={openMenu}
-                onMouseLeave={closeMenu}>
+                onMouseLeave={closeMenu}
+            >
                 <div className="loggedin-user">
                     <button className="user-btn" >
                         <i className="fa-solid fa-user-large" />
