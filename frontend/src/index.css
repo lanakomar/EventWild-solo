@@ -1,5 +1,19 @@
 /* TODO Add site wide styles */
+html,
+body {
+  height: 100%;
+  box-sizing: border-box;
+}
+
 body {
   background-color: rgb(255, 250, 243);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }

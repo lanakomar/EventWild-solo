@@ -1,0 +1,67 @@
+.form-page {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(/public/images/bckg-eventForm.jpg);
+    background-position: center;
+    background-size: cover;
+    opacity: 0.6;
+}
+
+.form-page form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: rgb(255, 250, 243);
+    border: 1px solid rgba(202, 211, 220, 0.6);
+    border-radius: 7px;
+    box-shadow: 0 0 10px black;
+    padding: 40px;
+}
+
+form > div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+form > div > label {
+    align-self: center;
+}
+
+form > div > input {
+    height: 1.5em;
+}
+
+form > div > select {
+    height: 2em;
+}
+
+form .button-container {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* .button-container button {
+    width: fit-content;
+} */
+
+form .file-input input {
+    height: 40px;
+}
+
+form .file-input input::-webkit-file-upload-button {
+    margin-right: 15px;
+}
+
+.button,
+::-webkit-file-upload-button {
+    width: fit-content;
+    padding: 10px;
+    background-color: rgba(202, 211, 220, 0.3);
+    border-radius: 5px;
+    border: 1px solid rgba(202, 211, 220, 0.6);
+}

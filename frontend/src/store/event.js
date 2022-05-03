@@ -1,4 +1,5 @@
 import { csrfFetch } from './csrf';
+
 const LOAD_EVENTS = 'home/LOAD';
 const LOAD_CATEGORIES = 'event/LOAD_CATEGORIES';
 const ADD_EVENT = 'event/ADD_EVENT';
@@ -20,7 +21,7 @@ const addEvent = (event) => ({
 
 export const getEvents = () => async dispatch => {
     const response = await fetch('/api/');
-
+    console.log("get events sent to db %%%%%%%")
     if (response.ok) {
         const list = await response.json();
         dispatch(loadEvents(list));
@@ -82,7 +83,6 @@ const eventReducer = (state = initialState, action) => {
                     [action.event.id]: action.event,
                     eventList: [...state.eventList]
                 };
-                console.log("newEventList", newState.eventList)
                 newState.eventList.push(action.event)
                 return newState;
             }

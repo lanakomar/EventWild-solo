@@ -24,7 +24,7 @@ const HomePage = () => {
 
     return (
         <>
-            <div className='banner'></div>
+            <div className='banner'><div></div></div>
         <main>
             {eventsList.map(event => {
                 return (

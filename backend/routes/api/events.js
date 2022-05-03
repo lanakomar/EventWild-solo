@@ -30,7 +30,11 @@ router.post('/', asyncHandler (async (req, res) => {
         img: url
     }
 
-    const event = await db.Event.create(eventToCreate);
+    const eventNew = await db.Event.create(eventToCreate);
+    const event = await db.Event.findByPk(eventNew.id,{
+        include: [db.User, db.Category]
+    });
+    console.log(event);
     return res.json(event);
 
 

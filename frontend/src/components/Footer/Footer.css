@@ -5,5 +5,10 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 40px;
+}
+
+.footer div {
+    height: 60px;
+    display: flex;
+    align-items: center;
 }

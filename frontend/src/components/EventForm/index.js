@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import './EventForm.css'
 
 
 import { getCategories, createEvent } from '../../store/event'
@@ -24,12 +25,12 @@ const EventForm = () => {
         return state.event.categories;
     });
 
-    const userId = useSelector(state => {
-        return state.session.user.id
+    const user = useSelector(state => {
+        return state.session.user
     });
 
 
-    if (!categoriesList) {
+    if (!categoriesList || !user) {
         return null;
     }
 
@@ -37,7 +38,7 @@ const EventForm = () => {
         e.preventDefault();
 
         const type = img.type;
-        const toBase64 =  file =>  new Promise((resolve, reject) => {
+        const toBase64 = file => new Promise((resolve, reject) => {
             const reader = new FileReader();
             reader.readAsDataURL(file);
             reader.onload = () => resolve(reader.result);
@@ -52,7 +53,7 @@ const EventForm = () => {
             capacity,
             img: await toBase64(img),
             categoryId: category,
-            hostId: userId,
+            hostId: user.id,
             type
         };
 
@@ -63,90 +64,98 @@ const EventForm = () => {
         }
     }
 
+    const handleCancelClick = () => {
+        history.push("/");
+    }
+
     return (
-        <form encType="multipart/form-data" onSubmit={onSubmit}>
-            <div>
-                <label htmlFor="name">Event Name</label>
-                <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                />
-            </div>
-            <div>
-                <label htmlFor="category">Event Category</label>
-                <select
-                    id="category"
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                >
-                    <option value="" disabled>Choose category</option>
-                    {categoriesList.map(category => {
-                        return (
-                            <option
-                                key={category.id}
-                                value={category.id}
-                            >
+        <div className='form-page'>
+            <form encType="multipart/form-data" onSubmit={onSubmit}>
+                <div>
+                    <label htmlFor="name">Event Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="category">Event Category</label>
+                    <select
+                        id="category"
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                    >
+                        <option value="" disabled>Choose category</option>
+                        {categoriesList.map(category => {
+                            return (
+                                <option
+                                    key={category.id}
+                                    value={category.id}
+                                >
                                     {category.type}
-                            </option>
-                        )
-                    })}
-                </select>
-            </div>
-            <div>
-                <label htmlFor="description">Event Description</label>
-                <textarea
-                    id="description"
-                    name="description"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                />
-            </div>
-            <div>
-                <label htmlFor="location">Event Location</label>
-                <input
-                    type="text"
-                    id="location"
-                    name="location"
-                    value={location}
-                    onChange={(e) => setLocation(e.target.value)}
-                />
-            </div>
-            <div>
-                <label htmlFor="date">Event Date</label>
-                <input
-                    type="date"
-                    id="date"
-                    name="date"
-                    value={date}
-                    onChange={(e) => setDate(e.target.value)}
-                />
-            </div>
-            <div>
-                <label htmlFor="capacity">Capacity</label>
-                <input
-                    type="number"
-                    min="0"
-                    id="capacity"
-                    name="capacity"
-                    value={capacity}
-                    onChange={(e) => setCapacity(e.target.value)}
-                />
-            </div>
-            <div>
-                <label htmlFor="img"></label>
-                <input
-                    type="file"
-                    id="img"
-                    name="img"
-                    onChange={(e) => setImg(e.target.files[0])}
-                />
-            </div>
-            <button type='submit'>Create Event</button>
-            <button>Cancel</button>
-        </form>
+                                </option>
+                            )
+                        })}
+                    </select>
+                </div>
+                <div>
+                    <label htmlFor="description">Event Description</label>
+                    <textarea
+                        id="description"
+                        name="description"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="location">Event Location</label>
+                    <input
+                        type="text"
+                        id="location"
+                        name="location"
+                        value={location}
+                        onChange={(e) => setLocation(e.target.value)}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="date">Event Date</label>
+                    <input
+                        type="date"
+                        id="date"
+                        name="date"
+                        value={date}
+                        onChange={(e) => setDate(e.target.value)}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="capacity">Capacity</label>
+                    <input
+                        type="number"
+                        min="0"
+                        id="capacity"
+                        name="capacity"
+                        value={capacity}
+                        onChange={(e) => setCapacity(e.target.value)}
+                    />
+                </div>
+                <div className='file-input'>
+                    <label htmlFor="img">Add Event Image</label>
+                    <input
+                        type="file"
+                        id="img"
+                        name="img"
+                        onChange={(e) => setImg(e.target.files[0])}
+                    />
+                </div>
+                <div className='button-container'>
+                    <button className="button" type='submit'>Create Event</button>
+                    <button className="button" onClick={handleCancelClick}>Cancel</button>
+                </div>
+            </form>
+        </div>
     )
 }
 
