@@ -151,7 +151,7 @@ const EventForm = () => {
                     <ErrorMessage label={"Date"} message={errorMessages.date} />
                 </div>
                 <div>
-                    <label htmlFor="capacity">Capacity</label>
+                    <label htmlFor="capacity">Available tickets</label>
                     <input
                         type="number"
                         min="0"

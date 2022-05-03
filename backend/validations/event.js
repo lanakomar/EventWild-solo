@@ -45,7 +45,7 @@ const date = check('date')
     });
 const capacity = check('capacity')
     .notEmpty()
-    .withMessage('Please, enter event capacity')
+    .withMessage('Please, enter number of available tickets')
     .isInt()
     .withMessage('Capacity must be a number');
 const img = check('img')

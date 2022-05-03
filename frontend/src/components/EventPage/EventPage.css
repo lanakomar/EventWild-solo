@@ -1,0 +1,120 @@
+.container {
+    margin: 0 auto;
+    height: 100%;
+}
+
+.blurred-banner {
+    position: absolute;
+    top: 61px;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.blurred-banner div {
+    height: 66vh;
+    background-image: url('/public/images/event-banner.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(50px) brightness(.9);
+    border: 0;
+    transform: translate(-50%, -50%);
+    width: 200%;
+    min-height: 500px;
+}
+
+.event-page {
+    background-color: white;
+    margin: 40px 0;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0;
+    gap: 30px;
+    width: 700px;
+}
+
+.event-page-header {
+    display: flex;
+    flex-direction: row;
+    padding: 20px 60px;
+    border-bottom: 0.5px solid rgba(202, 211, 220, 0.6);
+    height: 220px;
+    justify-content: space-between;
+    gap: 40px;
+    height: fit-content;
+}
+
+.event-img img {
+    max-width: 300px;
+}
+
+.info-container {
+    display:flex;
+    flex-direction: column;
+    gap: 70px;
+}
+
+.info-container .event-info {
+    text-transform: uppercase;
+    font-weight: bold;
+    align-self: center;
+    text-align: center;
+}
+
+.info-container .category {
+    align-self: center;
+}
+
+
+.btns-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.event-tickets {
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 0.5px solid rgba(202, 211, 220, 0.6);
+    padding-bottom: 30px;
+    align-items: center;
+}
+
+.reserve {
+    background-color: rgb(13, 133, 71);
+    color: white;
+    width: 200px;
+}
+
+
+.event-page-main {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    padding: 0 40px;
+    column-gap: 25px;
+}
+
+.event-page-main-left {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.event-page-main-left div:first-child {
+    font-size: smaller;
+    font-style: italic;
+}
+
+
+.event-page-main-right {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    justify-content: space-between;
+}
+
+.event-date i,
+.event-location i,
+.available-tickets i {
+    margin-right: 10px;
+}
