@@ -12,8 +12,8 @@ const EventForm = () => {
     const [description, setDescription] = useState("");
     const [location, setLocation] = useState("");
     const [date, setDate] = useState("");
-    const [capacity, setCapacity] = useState(0);
-    const [img, setImg] = useState("");
+    const [capacity, setCapacity] = useState("");
+    const [img, setImg] = useState(null);
     const [category, setCategory] = useState("");
 
     useEffect(() => {
@@ -24,6 +24,11 @@ const EventForm = () => {
         return state.event.categories;
     });
 
+    const userId = useSelector(state => {
+        return state.session.user.id
+    });
+
+
     if (!categoriesList) {
         return null;
     }
@@ -31,24 +36,35 @@ const EventForm = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
 
+        const type = img.type;
+        const toBase64 =  file =>  new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+        });
+
         const payload = {
             name,
             description,
             location,
             date,
             capacity,
-            img,
-            categyId: category
+            img: await toBase64(img),
+            categoryId: category,
+            hostId: userId,
+            type
         };
 
         let createdEvent = await dispatch(createEvent(payload));
+
         if (createdEvent) {
             history.push(`/events/${createdEvent.id}`)
         }
     }
 
     return (
-        <form onSubmit={onSubmit}>
+        <form encType="multipart/form-data" onSubmit={onSubmit}>
             <div>
                 <label htmlFor="name">Event Name</label>
                 <input
@@ -60,12 +76,13 @@ const EventForm = () => {
                 />
             </div>
             <div>
-                <label htmlFor="category">Choose Event Category</label>
+                <label htmlFor="category">Event Category</label>
                 <select
                     id="category"
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
                 >
+                    <option value="" disabled>Choose category</option>
                     {categoriesList.map(category => {
                         return (
                             <option
@@ -100,7 +117,7 @@ const EventForm = () => {
             <div>
                 <label htmlFor="date">Event Date</label>
                 <input
-                    type="calendar"
+                    type="date"
                     id="date"
                     name="date"
                     value={date}
@@ -124,8 +141,7 @@ const EventForm = () => {
                     type="file"
                     id="img"
                     name="img"
-                    value={img}
-                    onChange={(e) => setImg(e.target.value)}
+                    onChange={(e) => setImg(e.target.files[0])}
                 />
             </div>
             <button type='submit'>Create Event</button>

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { getEvents } from '../../store/home';
+import { getEvents } from '../../store/event';
 import './HomePage.css';
 
 
@@ -15,10 +15,10 @@ const HomePage = () => {
     }, [dispatch]);
 
     const eventsList = useSelector(state => {
-        return Object.values(state.home);
+        return Object.values(state.event.eventList);
     });
 
-    if (!eventsList.length) {
+    if (!eventsList) {
         return null;
     }
 

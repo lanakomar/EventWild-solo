@@ -6,7 +6,7 @@ import eventReducer from './event';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
-  home: homeReducer,
+  // home: homeReducer,
   event: eventReducer,
 });
 
