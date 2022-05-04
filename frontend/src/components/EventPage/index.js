@@ -8,6 +8,7 @@ import './EventPage.css';
 
 const EventPage = () => {
     const { eventId } = useParams();
+    const history = useHistory();
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -21,6 +22,10 @@ const EventPage = () => {
         return null;
     }
 
+    const handleEditClick = () => {
+        history.push(`/events/${eventId}/edit`);
+    }
+
     return (
         <div className='container'>
             <div className="blurred-banner"><div></div></div>
@@ -31,14 +36,14 @@ const EventPage = () => {
                         <div className="event-info">{event.name}</div>
                         <div className='category'>{event.Category.type}</div>
                         <div className="btns-container">
-                            <button className='button'>Edit</button>
+                            <button onClick={handleEditClick} className='button'>Edit</button>
                             <button className='button'>Delete</button>
                         </div>
                     </div>
                 </div>
                 <div className="event-tickets">
                     <div className="available-tickets">
-                        <i class="fa-solid fa-ticket"></i>
+                        <i className="fa-solid fa-ticket"></i>
                         Tickets available: {event.capacity}
                     </div>
                     <button className='button reserve'>Reserve a ticket</button>
@@ -50,12 +55,12 @@ const EventPage = () => {
                     </div>
                     <div className="event-page-main-right">
                         <div className='event-date'>
-                            <i class="fa-solid fa-calendar-check"></i>
+                            <i className="fa-solid fa-calendar-check"></i>
                             Date of event:
                             <p>{event.date}</p>
                         </div>
                         <div className='event-location'>
-                            <i class="fa-solid fa-earth-americas"></i>
+                            <i className="fa-solid fa-earth-americas"></i>
                             Location:
                             <p>{event.location}</p>
                         </div>

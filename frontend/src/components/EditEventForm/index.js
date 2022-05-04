@@ -1,90 +1,54 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
-import './EventForm.css'
 import { ValidationError } from '../../utils/validationError';
 import ErrorMessage from '../ErrorMessage';
-import { getCategories, createEvent } from '../../store/event'
+import { getCategories } from '../../store/event'
+import './EditEventForm.css';
 
-const EventForm = () => {
-    const [errorMessages, setErrorMessages] = useState({});
 
+
+const EditEventForm = () => {
+    const { eventId } = useParams();
     const dispatch = useDispatch();
+
+
+    const event = useSelector(state => {
+        return state.event[eventId];
+    });
+
+    console.log(event);
+    const categoriesList = useSelector(state => {
+        return state.event.categories;
+    });
+
     const history = useHistory();
-    const [name, setName] = useState("");
-    const [description, setDescription] = useState("");
-    const [location, setLocation] = useState("");
-    const [date, setDate] = useState("");
-    const [capacity, setCapacity] = useState("");
-    const [img, setImg] = useState(null);
-    const [category, setCategory] = useState("");
+
+    const [errorMessages, setErrorMessages] = useState({});
+    const [name, setName] = useState(event.name);
+    const [description, setDescription] = useState(event.description);
+    const [location, setLocation] = useState(event.location);
+    const [date, setDate] = useState(event.date);
+    const [capacity, setCapacity] = useState(event.capacity);
+    const [img, setImg] = useState(event.img);
+    const [category, setCategory] = useState(event.categoryId);
 
     useEffect(() => {
         dispatch(getCategories());
     }, [dispatch]);
 
-    const categoriesList = useSelector(state => {
-        return state.event.categories;
-    });
 
-    const user = useSelector(state => {
-        return state.session.user
-    });
-
-
-    if (!categoriesList || !user) {
-        return null;
-    }
-
-    const onSubmit = async (e) => {
-        e.preventDefault();
-
-        const type = img && img.type;
-        const toBase64 = file => new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = () => resolve(reader.result);
-            reader.onerror = error => reject(error);
-        });
-
-        const payload = {
-            name,
-            description,
-            location,
-            date,
-            capacity,
-            img: img ? await toBase64(img) : null,
-            categoryId: category,
-            hostId: user.id,
-            type
-        };
-
-        let createdEvent;
-        try {
-            createdEvent = await dispatch(createEvent(payload));
-        } catch (error) {
-            if (error instanceof ValidationError) {
-                setErrorMessages(error.errors);
-            } else {
-                setErrorMessages({ overall: error.toString().slice(7) });
-            }
-        }
-
-
-        if (createdEvent) {
-            history.push(`/events/${createdEvent.id}`)
-        }
-    }
+    const onSubmit = () => { }
 
     const handleCancelClick = () => {
         history.push("/");
-    }
+    };
 
     return (
         <div className='form-page'>
-            <form encType="multipart/form-data" onSubmit={onSubmit}>
-                <h2>Create Event</h2>
+            <form encType="multipart/form-data" className='edit-form' onSubmit={onSubmit}>
+                <h2>Edit Event</h2>
                 <ErrorMessage message={errorMessages.overall} />
                 <div>
                     <label htmlFor="name">Event Name</label>
@@ -164,22 +128,33 @@ const EventForm = () => {
                     <ErrorMessage label={"Capacity"} message={errorMessages.capacity} />
                 </div>
                 <div className='file-input'>
-                    <label htmlFor="img">Add Event Image</label>
+                    <label htmlFor="img">Add Event Image<sup>*</sup></label>
+                    <div className='input-and-img-container'>
                     <input
                         type="file"
                         id="img"
                         name="img"
                         onChange={(e) => setImg(e.target.files[0])}
                     />
+                    <div className="img-previous">
+                        <img src={event.img}/>
+                    </div>
+                    </div>
                     <ErrorMessage label={"Image"} message={errorMessages.img} />
                 </div>
                 <div className='button-container'>
-                    <button className="button" type='submit'>Create Event</button>
+                    <button className="button" type='submit'>Edit Event</button>
                     <button className="button" onClick={handleCancelClick}>Cancel</button>
+                </div>
+                <div className='explanation'>
+                    <span>
+                        <sup>*</sup>
+                         If want to cnange image
+                    </span>
                 </div>
             </form>
         </div>
     )
 }
 
-export default EventForm;
+export default EditEventForm;

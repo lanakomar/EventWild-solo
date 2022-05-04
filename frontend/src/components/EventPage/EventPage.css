@@ -71,6 +71,10 @@
     justify-content: space-around;
 }
 
+.btns-container button {
+    width: 61px;
+}
+
 .event-tickets {
     padding: 0 40px;
     display: flex;

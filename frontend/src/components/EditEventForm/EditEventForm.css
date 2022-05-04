@@ -1,0 +1,26 @@
+.form-page .edit-form {
+    width: 500px;
+}
+
+.input-and-img-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: space-around;
+}
+
+.img-previous img {
+    max-height: 100px;
+}
+
+sup {
+    color: maroon;
+}
+
+.explanation{
+    margin-top: 20px;
+}
+
+.explanation span {
+    font-size: smaller;
+}
