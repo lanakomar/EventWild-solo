@@ -16,9 +16,10 @@ const EventPage = () => {
     }, [dispatch]);
 
     const event = useSelector(state => state.event[eventId]);
-    console.log(event);
+    const user = useSelector(state => state.session.user);
 
-    if (!event) {
+
+    if (!event || !user) {
         return null;
     }
 
@@ -35,9 +36,9 @@ const EventPage = () => {
                     <div className="info-container">
                         <div className="event-info">{event.name}</div>
                         <div className='category'>{event.Category.type}</div>
-                        <div className="btns-container">
-                            <button onClick={handleEditClick} className='button'>Edit</button>
-                            <button className='button'>Delete</button>
+                        <div className="btns-container" hidden={event.hostId === user.id ? false : true}>
+                            <button onClick={handleEditClick} className='button' hidden={event.hostId === user.id ? false : true}>Edit</button>
+                            <button className='button' hidden={event.hostId === user.id ? false : true}>Delete</button>
                         </div>
                     </div>
                 </div>

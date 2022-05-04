@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import { ValidationError } from '../../utils/validationError';
 import ErrorMessage from '../ErrorMessage';
-import { getCategories } from '../../store/event'
+import { getCategories, editEvent, getOneEvent } from '../../store/event'
 import './EditEventForm.css';
 
 
@@ -13,17 +13,19 @@ const EditEventForm = () => {
     const { eventId } = useParams();
     const dispatch = useDispatch();
 
-
     const event = useSelector(state => {
         return state.event[eventId];
     });
+    const user = useSelector(state => {
+        return state.session.user
+    });
 
-    console.log(event);
+    console.log(user);
     const categoriesList = useSelector(state => {
         return state.event.categories;
     });
-
     const history = useHistory();
+
 
     const [errorMessages, setErrorMessages] = useState({});
     const [name, setName] = useState(event.name);
@@ -31,15 +33,65 @@ const EditEventForm = () => {
     const [location, setLocation] = useState(event.location);
     const [date, setDate] = useState(event.date);
     const [capacity, setCapacity] = useState(event.capacity);
-    const [img, setImg] = useState(event.img);
+    const [img, setImg] = useState("");
     const [category, setCategory] = useState(event.categoryId);
 
     useEffect(() => {
+        dispatch(getOneEvent(eventId))
+    }, [dispatch]);
+
+    useEffect( () => {
         dispatch(getCategories());
     }, [dispatch]);
 
 
-    const onSubmit = () => { }
+    if (!categoriesList || !user || !event) {
+        return null;
+    }
+
+    const onSubmit = async (e) => {
+        e.preventDefault();
+
+            const type = img && img.type;
+            const toBase64 = file => new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+            });
+
+        const payload = {
+            ...event,
+            name,
+            description,
+            location,
+            date,
+            capacity,
+            img: img ? await toBase64(img) : null,
+            categoryId: category,
+            hostId: user.id,
+            type,
+            imgUrl: img ? null : event.img
+        };
+
+        console.log(payload);
+
+        let editedEvent;
+        try {
+            editedEvent = await dispatch(editEvent(payload, eventId));
+        } catch (error) {
+            if (error instanceof ValidationError) {
+                setErrorMessages(error.errors);
+            } else {
+                setErrorMessages({ overall: error.toString().slice(7) });
+            }
+        }
+
+        if (editedEvent) {
+            history.push(`/events/${editedEvent.id}`)
+        }
+
+    }
 
     const handleCancelClick = () => {
         history.push("/");
@@ -149,7 +201,7 @@ const EditEventForm = () => {
                 <div className='explanation'>
                     <span>
                         <sup>*</sup>
-                         If want to cnange image
+                         If want to change image
                     </span>
                 </div>
             </form>

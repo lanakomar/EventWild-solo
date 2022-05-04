@@ -40,7 +40,7 @@ router.post('/',
         const event = await db.Event.findByPk(eventNew.id, {
             include: [db.User, db.Category]
         });
-        console.log(event);
+
         return res.json(event);
     }));
 
@@ -50,8 +50,66 @@ router.get('/:id', asyncHandler (async (req, res) => {
         include: [db.User, db.Category]
     });
 
-    console.log(event);
     return res.json(event);
 }));
+
+router.patch('/:id',
+    requireAuth,
+    eventValidattion.validateEdit,
+    asyncHandler (async (req, res) => {
+        const id = req.params.id;
+        const { name,
+                description,
+                location,
+                date,
+                capacity,
+                categoryId,
+                hostId,
+                img,
+                type,
+                imgUrl
+            } = req.body;
+
+            console.log(hostId, "&&&&&&&&&")
+
+        let url;
+        if (img) {
+            const imgType = mime.getExtension(type);
+
+            const base64Data = req.body.img.split("base64,")[1];
+            const imgName = Date.now();
+            require("fs").writeFile(`public/images/${imgName}.${imgType}`, base64Data, 'base64', function (err) {
+                console.log(err);
+            });
+
+            url = `/images/${imgName}.${imgType}`;
+        } else {
+            url = imgUrl;
+        }
+
+        const eventToUpdate = {
+            name,
+            description,
+            location,
+            date,
+            capacity,
+            categoryId,
+            hostId,
+            img: url
+        }
+
+        await db.Event.update(
+            eventToUpdate,
+            {
+                where: { id }
+            }
+        );
+
+        const updatedEvent = await db.Event.findByPk(id, {
+            include: [db.User, db.Category]
+        });
+
+        return res.json(updatedEvent);
+}))
 
 module.exports = router;

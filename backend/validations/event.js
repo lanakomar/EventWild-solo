@@ -3,7 +3,10 @@ const { handleValidationErrors } = require('./utils');
 
 const db = require('../db/models');
 
-
+const id = check('id')
+    .notEmpty()
+    .withMessage('cannot be empty')
+    .isInt({ min: 0 });
 const hostId = check('hostId')
     .notEmpty()
     .withMessage('Cannot be emty');
@@ -26,6 +29,23 @@ const name = check('name')
         }
         );
     });
+const updatedName = check('name')
+    .notEmpty()
+    .withMessage('Please, enter event name')
+    .custom((value, { req }) => {
+        return db.Event.findOne({
+            where: {
+                name: value
+            }
+        })
+            .then(event => {
+                if (event && event.hostId !== req.body.hostId) {
+                    return Promise.reject('Event with this name already exists');
+                }
+            }
+            );
+    });
+
 const description = check('description')
     .notEmpty()
     .withMessage('Please, enter event description');
@@ -62,5 +82,17 @@ exports.validateCreate = [
     date,
     capacity,
     img,
+    handleValidationErrors
+];
+
+exports.validateEdit = [
+    id,
+    hostId,
+    categoryId,
+    updatedName,
+    description,
+    location,
+    date,
+    capacity,
     handleValidationErrors
 ];

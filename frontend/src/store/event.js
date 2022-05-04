@@ -21,7 +21,7 @@ const addEvent = (event) => ({
 });
 
 export const getOneEvent = (eventId) => async dispatch => {
-    const response =await fetch(`/api/events/${eventId}`);
+    const response = await fetch(`/api/events/${eventId}`);
 
     if (response.ok) {
         const event = await response.json();
@@ -80,7 +80,42 @@ export const createEvent = (payload) => async dispatch => {
             }
         }
     }
+};
 
+export const editEvent = (payload, eventId)=> async dispatch => {
+    try {
+        const response = await csrfFetch(`/api/events/${eventId}`, {
+            method: "PATCH",
+            body: JSON.stringify(payload)
+        });
+        const event = await response.json();
+
+        dispatch(addEvent(event));
+        return event;
+
+    } catch (response) {
+        if (!response.ok) {
+            let error;
+            if (response.status === 422) {
+                error = await response.json();
+                throw new ValidationError(error.errors, response.statusText);
+            }
+            else {
+                let errorJSON;
+                error = await response.text();
+                try {
+                    // Check if the error is JSON, i.e., from the Pokemon server. If so,
+                    // don't throw error yet or it will be caught by the following catch
+                    errorJSON = JSON.parse(error);
+                }
+                catch {
+                    // Case if server could not be reached
+                    throw new Error(error);
+                }
+                throw new Error(`${errorJSON.title}: ${errorJSON.message}`);
+            }
+        }
+    }
 
 };
 

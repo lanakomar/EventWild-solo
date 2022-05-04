@@ -44,6 +44,12 @@
     height: fit-content;
 }
 
+.event-img {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+}
+
 .event-img img {
     max-width: 300px;
 }
@@ -69,6 +75,7 @@
 .btns-container {
     display: flex;
     justify-content: space-around;
+    gap: 20px;
 }
 
 .btns-container button {

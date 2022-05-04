@@ -23,8 +23,10 @@ main {
 
 
 .event-card {
+    display: flex;
+    flex-direction: column;
     width: 450px;
-    min-height: 550px;
+    min-height: 650px;
     height: fit-content;
     background-color: white;
     border-radius: 10px;
@@ -42,6 +44,10 @@ main {
 .event-card > h3 {
     text-align: center;
     color: rgb(66, 66, 66)
+}
+
+.event-card p:last-child {
+    margin-top: auto;
 }
 
 .img-container {
