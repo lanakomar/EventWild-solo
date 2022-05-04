@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
 import DeleteEventModal from '../DeleteEventModal';
+import ReserveTicket from '../ReserveTicketModal';
 import { getOneEvent } from '../../store/event';
 import './EventPage.css';
 
@@ -58,7 +59,7 @@ const EventPage = () => {
                         <i className="fa-solid fa-ticket"></i>
                         Tickets available: {event.capacity}
                     </div>
-                    <button className='button reserve'>Reserve a ticket</button>
+                    <ReserveTicket eventId={event.id} userId={user.id} />
                 </div>
                 <div className="event-page-main">
                     <div className="event-page-main-left">

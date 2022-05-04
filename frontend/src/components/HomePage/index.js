@@ -15,8 +15,9 @@ const HomePage = () => {
     }, [dispatch]);
 
     const eventsList = useSelector(state => {
-        return Object.values(state.event.eventList);
+        return state.event.eventList;
     });
+
 
     if (!eventsList) {
         return null;

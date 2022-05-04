@@ -126,7 +126,7 @@ export const editEvent = (payload, eventId)=> async dispatch => {
 
 };
 
-export const deleteEvent = (hostId, eventId) => async dispatch => {
+export const deleteEvent = (eventId) => async dispatch => {
     const response = await csrfFetch(`/api/events/${eventId}`, {
         method: "DELETE"
     });
@@ -135,6 +135,10 @@ export const deleteEvent = (hostId, eventId) => async dispatch => {
         const deletedEvent = await response.json()
         dispatch(deleteEventAction(deletedEvent.id, deletedEvent))
     }
+}
+
+export const reserveTicket = (eventId, userId) => async dispatch => {
+
 }
 
 
@@ -154,7 +158,6 @@ const eventReducer = (state = initialState, action) => {
             return {
                 ...allEvents,
                 ...state,
-                categories: [...state.categories],
                 eventList: action.list
             };
         case LOAD_CATEGORIES:
