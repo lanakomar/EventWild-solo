@@ -4,6 +4,7 @@ import { ValidationError } from '../utils/validationError';
 const LOAD_EVENTS = 'home/LOAD';
 const LOAD_CATEGORIES = 'event/LOAD_CATEGORIES';
 const ADD_EVENT = 'event/ADD_EVENT';
+const DELETE_EVENT = 'event/DELETE_EVENT'
 
 const loadEvents = list => ({
     type: LOAD_EVENTS,
@@ -17,6 +18,12 @@ const loadCategories = (categories) => ({
 
 const addEvent = (event) => ({
     type: ADD_EVENT,
+    event
+});
+
+const deleteEventAction = (eventId, event) => ({
+    type: DELETE_EVENT,
+    eventId,
     event
 });
 
@@ -119,6 +126,17 @@ export const editEvent = (payload, eventId)=> async dispatch => {
 
 };
 
+export const deleteEvent = (hostId, eventId) => async dispatch => {
+    const response = await csrfFetch(`/api/events/${eventId}`, {
+        method: "DELETE"
+    });
+
+    if (response.ok) {
+        const deletedEvent = await response.json()
+        dispatch(deleteEventAction(deletedEvent.id, deletedEvent))
+    }
+}
+
 
 const initialState = {
     eventList: [],
@@ -136,11 +154,13 @@ const eventReducer = (state = initialState, action) => {
             return {
                 ...allEvents,
                 ...state,
+                categories: [...state.categories],
                 eventList: action.list
             };
         case LOAD_CATEGORIES:
             return {
                 ...state,
+                eventList: [...state.eventList],
                 categories: action.categories
             };
         case ADD_EVENT:
@@ -148,7 +168,8 @@ const eventReducer = (state = initialState, action) => {
                 const newState = {
                     ...state,
                     [action.event.id]: action.event,
-                    eventList: [...state.eventList]
+                    eventList: [...state.eventList],
+                    categories: [...state.categories]
                 };
                 newState.eventList.push(action.event)
                 return newState;
@@ -158,8 +179,21 @@ const eventReducer = (state = initialState, action) => {
                 [action.event.id]: {
                     ...state[action.event.id],
                     ...action.event
-                }
+                },
+                eventList: [...state.eventList],
+                categories: [...state.categories]
             };
+        case DELETE_EVENT:
+            const newState = {
+                ...state,
+                eventList: [...state.eventList],
+                categories: [...state.categories]
+            }
+            delete newState[action.eventId]
+            const idx = state.eventList.indexOf(action.event);
+            newState.eventList.splice(idx, 1);
+
+            return newState;
         default:
             return state;
     }

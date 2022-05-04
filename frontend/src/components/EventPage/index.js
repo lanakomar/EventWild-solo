@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 
+import DeleteEventModal from '../DeleteEventModal';
 import { getOneEvent } from '../../store/event';
 import './EventPage.css';
 
@@ -27,6 +28,7 @@ const EventPage = () => {
         history.push(`/events/${eventId}/edit`);
     }
 
+
     return (
         <div className='container'>
             <div className="blurred-banner"><div></div></div>
@@ -37,8 +39,17 @@ const EventPage = () => {
                         <div className="event-info">{event.name}</div>
                         <div className='category'>{event.Category.type}</div>
                         <div className="btns-container" hidden={event.hostId === user.id ? false : true}>
-                            <button onClick={handleEditClick} className='button' hidden={event.hostId === user.id ? false : true}>Edit</button>
-                            <button className='button' hidden={event.hostId === user.id ? false : true}>Delete</button>
+                            <button
+                                onClick={handleEditClick}
+                                className='button'
+                                hidden={event.hostId === user.id ? false : true}
+                            >
+                                Edit
+                            </button>
+                            <DeleteEventModal
+                                event={event}
+                                user={user}
+                            />
                         </div>
                     </div>
                 </div>

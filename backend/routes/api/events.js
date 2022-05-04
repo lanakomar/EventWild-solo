@@ -44,7 +44,7 @@ router.post('/',
         return res.json(event);
     }));
 
-router.get('/:id', asyncHandler (async (req, res) => {
+router.get('/:id(\\d+)', asyncHandler (async (req, res) => {
     const id = req.params.id;
     const event = await db.Event.findByPk(id, {
         include: [db.User, db.Category]
@@ -53,7 +53,7 @@ router.get('/:id', asyncHandler (async (req, res) => {
     return res.json(event);
 }));
 
-router.patch('/:id',
+router.patch('/:id(\\d+)',
     requireAuth,
     eventValidattion.validateEdit,
     asyncHandler (async (req, res) => {
@@ -110,6 +110,18 @@ router.patch('/:id',
         });
 
         return res.json(updatedEvent);
-}))
+}));
+
+router.delete('/:id(\\d+)',
+    requireAuth,
+    asyncHandler (async (req, res) => {
+        const eventId = req.params.id;
+
+        const eventToDelete = await db.Event.findByPk(eventId);
+        if (!eventToDelete) throw new Error('Cannot find event');
+
+        await eventToDelete.destroy();
+        return res.json(eventToDelete);
+    }))
 
 module.exports = router;

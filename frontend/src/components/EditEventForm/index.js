@@ -93,8 +93,9 @@ const EditEventForm = () => {
 
     }
 
-    const handleCancelClick = () => {
-        history.push("/");
+    const handleCancelClick = (e) => {
+        e.preventDefault();
+        history.push(`/events/${eventId}`);
     };
 
     return (
