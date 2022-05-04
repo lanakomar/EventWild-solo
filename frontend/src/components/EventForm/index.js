@@ -5,7 +5,8 @@ import { useHistory } from 'react-router-dom';
 import './EventForm.css'
 import { ValidationError } from '../../utils/validationError';
 import ErrorMessage from '../ErrorMessage';
-import { getCategories, createEvent } from '../../store/event'
+import { createEvent } from '../../store/event';
+import { getCategories } from '../../store/category';
 
 const EventForm = () => {
     const [errorMessages, setErrorMessages] = useState({});
@@ -25,7 +26,7 @@ const EventForm = () => {
     }, [dispatch]);
 
     const categoriesList = useSelector(state => {
-        return state.event.categories;
+        return state.category;
     });
 
     const user = useSelector(state => {
@@ -106,7 +107,7 @@ const EventForm = () => {
                         onChange={(e) => setCategory(e.target.value)}
                     >
                         <option value="" disabled>Choose category</option>
-                        {categoriesList.map(category => {
+                        {Object.values(categoriesList).map(category => {
                             return (
                                 <option
                                     key={category.id}

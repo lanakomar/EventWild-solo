@@ -4,7 +4,8 @@ import { useHistory, useParams } from 'react-router-dom';
 
 import { ValidationError } from '../../utils/validationError';
 import ErrorMessage from '../ErrorMessage';
-import { getCategories, editEvent, getOneEvent } from '../../store/event'
+import { editEvent, getOneEvent } from '../../store/event'
+import { getCategories } from '../../store/category';
 import './EditEventForm.css';
 
 
@@ -22,7 +23,7 @@ const EditEventForm = () => {
 
     console.log(user);
     const categoriesList = useSelector(state => {
-        return state.event.categories;
+        return state.category;
     });
     const history = useHistory();
 
@@ -123,7 +124,7 @@ const EditEventForm = () => {
                         onChange={(e) => setCategory(e.target.value)}
                     >
                         <option value="" disabled>Choose category</option>
-                        {categoriesList.map(category => {
+                        {Object.values(categoriesList).map(category => {
                             return (
                                 <option
                                     key={category.id}

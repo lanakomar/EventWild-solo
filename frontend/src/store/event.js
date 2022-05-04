@@ -2,18 +2,12 @@ import { csrfFetch } from './csrf';
 import { ValidationError } from '../utils/validationError';
 
 const LOAD_EVENTS = 'home/LOAD';
-const LOAD_CATEGORIES = 'event/LOAD_CATEGORIES';
 const ADD_EVENT = 'event/ADD_EVENT';
 const DELETE_EVENT = 'event/DELETE_EVENT'
 
 const loadEvents = list => ({
     type: LOAD_EVENTS,
     list
-});
-
-const loadCategories = (categories) => ({
-    type: LOAD_CATEGORIES,
-    categories
 });
 
 const addEvent = (event) => ({
@@ -43,15 +37,6 @@ export const getEvents = () => async dispatch => {
         dispatch(loadEvents(list));
     }
 }
-
-export const getCategories = () => async dispatch => {
-    const response = await fetch('/api/categories');
-
-    if (response.ok) {
-        const categories = await response.json();
-        dispatch(loadCategories(categories));
-    }
-};
 
 export const createEvent = (payload) => async dispatch => {
     try {
@@ -144,7 +129,6 @@ export const reserveTicket = (eventId, userId) => async dispatch => {
 
 const initialState = {
     eventList: [],
-    categories: []
 };
 
 
@@ -160,19 +144,12 @@ const eventReducer = (state = initialState, action) => {
                 ...state,
                 eventList: action.list
             };
-        case LOAD_CATEGORIES:
-            return {
-                ...state,
-                eventList: [...state.eventList],
-                categories: action.categories
-            };
         case ADD_EVENT:
             if (!state[action.event.id]) {
                 const newState = {
                     ...state,
                     [action.event.id]: action.event,
                     eventList: [...state.eventList],
-                    categories: [...state.categories]
                 };
                 newState.eventList.push(action.event)
                 return newState;
@@ -184,13 +161,11 @@ const eventReducer = (state = initialState, action) => {
                     ...action.event
                 },
                 eventList: [...state.eventList],
-                categories: [...state.categories]
             };
         case DELETE_EVENT:
             const newState = {
                 ...state,
                 eventList: [...state.eventList],
-                categories: [...state.categories]
             }
             delete newState[action.eventId]
             const idx = state.eventList.indexOf(action.event);
