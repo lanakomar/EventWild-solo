@@ -67,10 +67,27 @@ router.get('/:id/tickets',
         });
 
         if (tickets) {
-            res.json(tickets);
+            return res.json(tickets);
         } else {
-            res.json({message: "You have no reserved tickets yet."});
+            return res.json({message: "You have no reserved tickets yet."});
         }
 }));
+
+//get events where user is the host
+router.get('/:id/events',
+    requireAuth,
+    asyncHandler (async (req, res) => {
+        const hostId = req.params.id;
+
+        const events = await Event.findAll({
+            where: { hostId }
+        });
+
+        if (events) {
+            return res.json(events)
+        } else {
+            return res.json({ message: "You don't host an event yet." })
+        }
+    }));
 
 module.exports = router;

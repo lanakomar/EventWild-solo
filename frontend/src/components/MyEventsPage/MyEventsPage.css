@@ -1,0 +1,69 @@
+.wrapper {
+    height: 100%;
+}
+
+.my-events-container {
+    height: 100%;
+    width: 70%;
+    margin: 0 auto;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.events-header {
+    margin-bottom: 20px;
+    font-size: larger;
+    color: white;
+    font-weight: bold;
+}
+
+.my-events-container .event-container:nth-child(odd) {
+    background-color: rgba(245, 222, 190, 0.9);
+}
+
+.my-events-container .event-container:nth-child(even) {
+    background-color: rgba(255, 244, 229, 0.9);
+}
+
+.background {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    filter: blur(10px) brightness(.9);
+}
+
+.events-header,
+.event-container {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    column-gap: 10px;
+    justify-items: center;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.event-container {
+    height: 70px;
+    border-radius: 35px;
+}
+
+.event-container div {
+    text-align: center;
+}
+
+.event-container .button {
+    text-decoration: none;
+    color: black;
+    margin: 10px;
+    box-shadow: 0 0 5px grey;
+
+}
+
+
+.my-events-container .event-container:nth-child(odd) .button {
+        background-color: rgb(244, 199, 154);
+}

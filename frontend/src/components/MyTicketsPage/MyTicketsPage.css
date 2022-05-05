@@ -4,10 +4,30 @@
      height: 100%;
  }
 
+.background {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    filter: blur(10px) brightness(.9);
+}
+
+.table-container {
+    width: 55%;
+    margin: 0 auto;
+}
+
  .my-tickets {
-     width: 55%;
-     margin: 0 auto;
+
      border-collapse: collapse;
+     border-style: hidden;
+     border-radius: 5px;
+ }
+
+ .my-tickets thead th {
+     color: white;
+     padding-bottom: 10px;
  }
 
  .my-tickets tr {

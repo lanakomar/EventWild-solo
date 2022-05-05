@@ -1,6 +1,5 @@
 const LOAD_CATEGORIES = 'event/LOAD_CATEGORIES';
 
-
 const loadCategories = (categories) => ({
     type: LOAD_CATEGORIES,
     categories
