@@ -56,10 +56,13 @@ const EventPage = () => {
                 </div>
                 <div className="event-tickets">
                     <div className="available-tickets">
-                        <i className="fa-solid fa-ticket"></i>
-                        Tickets available: {event.capacity}
+                        <div className='ticket-info'>
+                                <i className="fa-solid fa-ticket"></i>
+                                Tickets available: {event.capacity}
+                            </div>
+                        <div>Ticket price: ${event.price}</div>
                     </div>
-                    <ReserveTicket eventId={event.id} userId={user.id} />
+                    <ReserveTicket event={event} userId={user.id} />
                 </div>
                 <div className="event-page-main">
                     <div className="event-page-main-left">

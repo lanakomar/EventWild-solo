@@ -1,0 +1,46 @@
+.reservation-form {
+    width:500px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reservation-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.error {
+    background-color: rgba(254, 179, 194, 0.5);
+    color: maroon;
+    width: fit-content;
+    border-radius: 5px;
+    padding: 10px;
+    list-style: none;
+}
+
+.reservation-form .tickets-selector {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.reservation-form input {
+    width: 100px;
+    height: 2em;
+}
+
+.button.reserve {
+    background-color: rgb(13, 133, 71);
+    color: white;
+    width: 200px;
+}
+
+.reserve-sm {
+    background-color: rgb(13, 133, 71);
+    color: white;
+}

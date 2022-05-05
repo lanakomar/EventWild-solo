@@ -13,7 +13,16 @@ router.post('/',
     requireAuth,
     eventValidattion.validateCreate,
     asyncHandler(async (req, res) => {
-        const { name, description, location, date, capacity, categoryId, hostId, type } = req.body;
+        const {
+            name,
+            description,
+            location,
+            date,
+            capacity,
+            categoryId,
+            hostId,
+            type,
+            price } = req.body;
         const imgType = mime.getExtension(type);
 
         const base64Data = req.body.img.split("base64,")[1];
@@ -31,6 +40,7 @@ router.post('/',
             location,
             date,
             capacity,
+            price,
             categoryId,
             hostId,
             img: url
@@ -44,7 +54,7 @@ router.post('/',
         return res.json(event);
     }));
 
-router.get('/:id(\\d+)', asyncHandler (async (req, res) => {
+router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     const id = req.params.id;
     const event = await db.Event.findByPk(id, {
         include: [db.User, db.Category]
@@ -56,21 +66,20 @@ router.get('/:id(\\d+)', asyncHandler (async (req, res) => {
 router.patch('/:id(\\d+)',
     requireAuth,
     eventValidattion.validateEdit,
-    asyncHandler (async (req, res) => {
+    asyncHandler(async (req, res) => {
         const id = req.params.id;
         const { name,
-                description,
-                location,
-                date,
-                capacity,
-                categoryId,
-                hostId,
-                img,
-                type,
-                imgUrl
-            } = req.body;
-
-            console.log(hostId, "&&&&&&&&&")
+            description,
+            location,
+            date,
+            capacity,
+            price,
+            categoryId,
+            hostId,
+            img,
+            type,
+            imgUrl
+        } = req.body;
 
         let url;
         if (img) {
@@ -93,6 +102,7 @@ router.patch('/:id(\\d+)',
             location,
             date,
             capacity,
+            price,
             categoryId,
             hostId,
             img: url
@@ -110,11 +120,11 @@ router.patch('/:id(\\d+)',
         });
 
         return res.json(updatedEvent);
-}));
+    }));
 
 router.delete('/:id(\\d+)',
     requireAuth,
-    asyncHandler (async (req, res) => {
+    asyncHandler(async (req, res) => {
         const eventId = req.params.id;
 
         const eventToDelete = await db.Event.findByPk(eventId);
@@ -122,6 +132,31 @@ router.delete('/:id(\\d+)',
 
         await eventToDelete.destroy();
         return res.json(eventToDelete);
-    }))
+    }));
+
+router.post('/:id(\\d+)/tickets',
+    requireAuth,
+    asyncHandler(async (req, res) => {
+        console.log()
+        const id = req.params.id;
+
+        const { userId, eventId, qty, capacity } = req.body;
+        const ticketToCreate = { userId, eventId, qty };
+
+        const newTicket = await db.Ticket.create(ticketToCreate);
+
+        if (newTicket) {
+            const newCapacity = capacity - qty;
+            console.log(newCapacity)
+            await db.Event.update(
+                { capacity: newCapacity },
+                { where: { id } }
+            )
+            const updatedEvent = await db.Event.findByPk(eventId);
+
+            res.json(updatedEvent)
+        }
+
+    }));
 
 module.exports = router;

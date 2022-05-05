@@ -18,6 +18,7 @@ const EventForm = () => {
     const [location, setLocation] = useState("");
     const [date, setDate] = useState("");
     const [capacity, setCapacity] = useState("");
+    const [price, setPrice] = useState("");
     const [img, setImg] = useState(null);
     const [category, setCategory] = useState("");
 
@@ -55,6 +56,7 @@ const EventForm = () => {
             location,
             date,
             capacity,
+            price,
             img: img ? await toBase64(img) : null,
             categoryId: category,
             hostId: user.id,
@@ -137,6 +139,7 @@ const EventForm = () => {
                         id="location"
                         name="location"
                         value={location}
+                        placeholder="ex: Heather Farm Park"
                         onChange={(e) => setLocation(e.target.value)}
                     />
                     <ErrorMessage label={"Location"} message={errorMessages.location} />
@@ -148,21 +151,36 @@ const EventForm = () => {
                         id="date"
                         name="date"
                         value={date}
+                        placeholder="ex: 12/31/2000"
                         onChange={(e) => setDate(e.target.value)}
                     />
                     <ErrorMessage label={"Date"} message={errorMessages.date} />
                 </div>
-                <div>
-                    <label htmlFor="capacity">Available tickets</label>
-                    <input
-                        type="number"
-                        min="0"
-                        id="capacity"
-                        name="capacity"
-                        value={capacity}
-                        onChange={(e) => setCapacity(e.target.value)}
-                    />
-                    <ErrorMessage label={"Capacity"} message={errorMessages.capacity} />
+                <div className='tickets-info'>
+                    <div>
+                        <label htmlFor="capacity">Available tickets</label>
+                        <input
+                            type="number"
+                            min="0"
+                            id="capacity"
+                            name="capacity"
+                            value={capacity}
+                            onChange={(e) => setCapacity(e.target.value)}
+                        />
+                        <ErrorMessage label={"Capacity"} message={errorMessages.capacity} />
+                    </div>
+                    <div>
+                        <label htmlFor="price">Ticket price</label>
+                        <input
+                            type="number"
+                            min="0"
+                            id="price"
+                            name="price"
+                            value={price}
+                            onChange={(e) => setPrice(e.target.value)}
+                        />
+                        <ErrorMessage label={"Price"} message={errorMessages.price} />
+                    </div>
                 </div>
                 <div className='file-input'>
                     <label htmlFor="img">Add Event Image</label>

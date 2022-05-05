@@ -11,6 +11,7 @@ module.exports = {
       date: '2022-05-21',
       img: '/images/S3JvZmZ0IEtvbiAtIFRyaWJ1dGUgdG8gU2lkIGFuZCBNYXJ0eSBLcm9mZnQ=.jpeg',
       capacity: 128, createdAt: new Date(),
+      price: 15,
       updatedAt: new Date()
     },
       {
@@ -22,6 +23,7 @@ module.exports = {
         date: '2022-08-05',
         img: '/images/Rm9vZGllTGFuZCBOaWdodCBNYXJrZXQgIC0gQmVya2VsZXkgfCBBdWd1c3QgNS03.jpeg',
         capacity: 103,
+        price: 19,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -34,6 +36,7 @@ module.exports = {
         date: '2022-05-07',
         img: '/images/QmlibGljYWwgVGhlb2xvZ3kgV29ya3Nob3AgZm9yIFdvbWVuIDo6IFNhbiBGcmFuY2lzY28sIENB.jpeg',
         capacity: 122,
+        price: 3,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -46,6 +49,7 @@ module.exports = {
         date: '2022-05-07',
         img: '/images/Uml2ZXJ0b3duIEFydCBhbmQgV2luZSBXYWxrIQ==.jpeg',
         capacity: 100,
+        price: 14,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -58,6 +62,7 @@ module.exports = {
         date: '2022-05-08',
         img: '/images/VEVBU0UgU09VVEhFUk4gS0lUQ0hFTiBTVU5EQVkgQlJVTkNI.jpeg',
         capacity: 59,
+        price: 20,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -70,6 +75,7 @@ module.exports = {
         date: '2022-05-21',
         img: '/images/VG9hc3RlZCBMaWZlIFN1bW1lciBPdXRkb29yIEJsb2NrIFBhcnR5.jpeg',
         capacity: 128,
+        price: 22,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -82,6 +88,7 @@ module.exports = {
         date: '2022-05-21',
         img: '/images/NzNyZCBCbGFjayAmIFdoaXRlIEJhbGw=.jpeg',
         capacity: 136,
+        price: 40,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -94,6 +101,7 @@ module.exports = {
         date: '2022-05-28',
         img: '/images/QmF5IEFyZWEgS2lkRmVzdCDigJgyMiBBZG1pc3Npb24gJiBBbGwtRGF5IFJpZGVzIFdyaXN0YmFuZC1MaW1pdGVkIFRpbWUgT2ZmZXI=.jpeg',
         capacity: 87,
+        price: 35,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -106,6 +114,7 @@ module.exports = {
         date: '2022-07-02',
         img: '/images/TW9zc3dvb2QgTWVsdGRvd24=.jpeg',
         capacity: 110,
+        price: 15,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -118,6 +127,7 @@ module.exports = {
         date: '2022-06-11',
         img: '/images/R2xvY2hlbGxh.jpeg',
         capacity: 74,
+        price: 23,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -130,6 +140,7 @@ module.exports = {
         date: '2022-06-22',
         img: '/images/VU5DT1JLRUQgaXMgQkFDSyEhISE=.jpeg',
         capacity: 44,
+        price: 18,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -142,6 +153,7 @@ module.exports = {
         date: '2022-05-06',
         img: '/images/U0FMU0EgJiBCQUNIQVRBIEZSSURBWVMgaW4gV2FsbnV0IENyZWVrIQ==.jpeg',
         capacity: 123,
+        price: 10,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -154,6 +166,7 @@ module.exports = {
         date: '2022-06-01',
         img: '/images/Q0FQQSAyMDIyIEp1bmUgU2hvd2Nhc2UgLSBXRURORVNEQVksIEpVTkUgMSAtIFNIT1cgQw==.jpeg',
         capacity: 90,
+        price: 18,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -166,6 +179,7 @@ module.exports = {
         date: '2022-05-06',
         img: '/images/UmVkIEJ1bGwgRGFuY2UgWW91ciBTdHlsZSBPYWtsYW5kIFF1YWxpZmllcg==.jpeg',
         capacity: 113,
+        price: 22,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -178,6 +192,7 @@ module.exports = {
         date: '2022-05-05',
         img: '/images/OTAncyBDb21lZHkgTmlnaHQ6IFN0YW5kIFVwIENvbWVkeSBXaXRoIEEgOTAncyBEcmVzcyBDb2Rl.jpeg',
         capacity: 131,
+        price: 24,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -190,6 +205,7 @@ module.exports = {
         date: '2022-05-14',
         img: '/images/QnVpbGRpbmcgU2FmZXR5IFRocm91Z2ggQ29tbXVuaXR5.jpeg',
         capacity: 100,
+        price: 12,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -202,6 +218,7 @@ module.exports = {
         date: '2022-05-26',
         img: '/images/U2F1c2FnZSBGZXN0IENvbWVkeTogU2VjcmV0IExhZGllcyBDb21lZHkgU2hvdyAgTGl2ZQ==.jpeg',
         capacity: 42,
+        price: 36,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -214,6 +231,7 @@ module.exports = {
         date: '2022-05-07',
         img: '/images/RGlhYmxvIFZhbGxleSBDb2xsZWdlIENBUiBTSE9XIC0gR3JlYXQgRGVzaWduZXJzIFNlcmllcw==.jpeg',
         capacity: 37,
+        price: 10,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -226,6 +244,7 @@ module.exports = {
         date: '2022-05-14',
         img: '/images/QWZybyBTb2NhIExvdmUgOiBPYWtsYW5kIEJsYWNrIE93bmVkIE1hcmtldHBsYWNlICsgQWZ0ZXJwYXJ0eQ==.jpeg',
         capacity: 130,
+        price: 7,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -238,6 +257,7 @@ module.exports = {
         date: '2022-05-04',
         img: '/images/VUMgQmVya2VsZXkgU3BhY2UgVGVjaG5vbG9neSBTeW1wb3NpdW0gMjAyMg==.jpeg',
         capacity: 30,
+        price: 13,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -250,6 +270,7 @@ module.exports = {
         date: '2022-05-12',
         img: '/images/U3RhcnIgS2luZyBDb21tZW5jZW1lbnQgMjAyMg==.jpeg',
         capacity: 89,
+        price: 24,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -262,6 +283,7 @@ module.exports = {
         date: '2022-06-27',
         img: '/images/MTZ0aCBBbm51YWwgS25pZ2h0cyBvZiBDb2x1bWJ1cyBDaGFyaXR5IEdvbGYgIFBMRUFTRSBKT0lOICBPVVIgV0FJVExJU1Q=.jpeg',
         capacity: 63,
+        price: 25,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -274,6 +296,7 @@ module.exports = {
         date: '2022-06-18',
         img: '/images/NXRoIEFubnVhbCBCbGFjayBGb29kICYgV2luZSBFeHBlcmllbmNlIDIwMjI=.jpeg',
         capacity: 30,
+        price: 34,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -286,6 +309,7 @@ module.exports = {
         date: '2022-05-14',
         img: '/images/Um9vdGVkICYgUnlzaW5nIEdyYW5kIE9wZW5pbmc=.jpeg',
         capacity: 90,
+        price: 12,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -298,6 +322,7 @@ module.exports = {
         date: '2022-05-06',
         img: '/images/VG9hc3RlZCBMaWZlIHwgVmliZSBMb3VuZ2UgUiZC.jpeg',
         capacity: 59,
+        price: 7,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -310,6 +335,7 @@ module.exports = {
         date: '2022-06-04',
         img: '/images/OHRoIEFubnVhbCBQaW50cyBmb3IgUGF3c8Ku.jpeg',
         capacity: 144,
+        price: 24,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -322,6 +348,7 @@ module.exports = {
         date: '2022-05-10',
         img: '/images/TWluaSBNaW5lcnMh.jpeg',
         capacity: 43,
+        price: 18,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -335,6 +362,7 @@ module.exports = {
         date: '2022-05-17',
         img: '/images/Q29udHJhIENvc3RhIFNwcmluZyBMZWFndWUgICYgQmF5IEFyZWEgTGFkaWVzIExlYWd1ZSBBbm51YWwgTHVuY2hlb24h.jpeg',
         capacity: 32,
+        price: 15,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -347,6 +375,7 @@ module.exports = {
         date: '2022-05-04',
         img: '/images/Tk8gV0FIQUxBIFdFRE5FU0RBWVMgIChUaGUgSG90dGVzdCBBZnJvYmVhdHMgV2Vla2x5IEluIFRoZSBCYXkgQXJlYSk=.jpeg',
         capacity: 31,
+        price: 24,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -359,6 +388,7 @@ module.exports = {
         date: '2022-05-06',
         img: '/images/RmFtaWx5IEZ1biBGcmlkYXlzIGluIFBpdHRzYnVyZyBJbiBNYXk=.jpeg',
         capacity: 94,
+        price: 26,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -371,6 +401,7 @@ module.exports = {
         date: '2022-05-12',
         img: '/images/NCAtOCBob3VycyBBTSAgUGFpbiAmIHRoZSBFbGRlcmx5IOKAkyBQTSAgTGVnYWwgSXNzdWVzIGZvciBDTkFz.jpeg',
         capacity: 113,
+        price: 22,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -383,6 +414,7 @@ module.exports = {
         date: '2022-05-07',
         img: '/images/TW90aGVyJ3MgRGF5IEJydW5jaCAmIE1pbW9zYXMgYnkgU2FuIFBhYmxvIEJheSE=.jpeg',
         capacity: 127,
+        price: 28,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -395,6 +427,7 @@ module.exports = {
         date: '2022-05-17',
         img: '/images/QmFya3MgYW5kIEJyZXdz.jpeg',
         capacity: 97,
+        price: 15,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -407,6 +440,7 @@ module.exports = {
         date: '2022-05-20',
         img: '/images/VGhlIFdpeiBKcg==.jpeg',
         capacity: 98,
+        price: 8,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -419,6 +453,7 @@ module.exports = {
         date: '2022-05-21',
         img: '/images/QmVya2VsZXkgRmFybWVycyBNYXJrZXQgU2Fsc2EgRmVzdGl2YWwgMjAyMg==.jpeg',
         capacity: 143,
+        price: 3,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -431,6 +466,7 @@ module.exports = {
         date: '2022-06-11',
         img: '/images/RlJFRSAgUEVMTEVUQiBUZXN0aW5n.jpeg',
         capacity: 148,
+        price: 7,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -443,6 +479,7 @@ module.exports = {
         date: '2022-05-07',
         img: '/images/Q2FyIHNob3c=.jpeg',
         capacity: 40,
+        price: 15,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -455,6 +492,7 @@ module.exports = {
         date: '2022-05-05',
         img: '/images/Q3VycnkgQ2FueW9uIFJhbmNoIE10LiBEaWFibG8gQXVkdWJvbiBIaWtl.jpeg',
         capacity: 65,
+        price: 18,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -467,6 +505,7 @@ module.exports = {
         date: '2022-05-04',
         img: '/images/U2VuaW9yIERpcmVjdGVkIFBsYXlz.jpeg',
         capacity: 100,
+        price: 16,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -479,6 +518,7 @@ module.exports = {
         date: '2022-05-13',
         img: '/images/YmxpbmsgMTgwVFJVRSAoVHJpYnV0ZSB0byBCbGluayAxODIpIExJVkUgYXQgUmV0cm8gSnVua2ll.jpeg',
         capacity: 140,
+        price: 20,
         createdAt: new Date(),
         updatedAt: new Date()
       }], {});

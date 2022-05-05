@@ -122,14 +122,21 @@ export const deleteEvent = (eventId) => async dispatch => {
     }
 }
 
-export const reserveTicket = (eventId, userId) => async dispatch => {
+export const reserveTicket = (eventId, payload) => async dispatch => {
+    const response = await csrfFetch(`/api/events/${eventId}/tickets`, {
+        method: "POST",
+        body: JSON.stringify(payload)
+    });
 
+    if (response.ok) {
+        console.log("success")
+        const event = await response.json();
+        dispatch(addEvent(event));
+    }
 }
 
 
-const initialState = {
-    eventList: [],
-};
+const initialState = {};
 
 
 const eventReducer = (state = initialState, action) => {
@@ -142,16 +149,13 @@ const eventReducer = (state = initialState, action) => {
             return {
                 ...allEvents,
                 ...state,
-                eventList: action.list
             };
         case ADD_EVENT:
             if (!state[action.event.id]) {
                 const newState = {
                     ...state,
                     [action.event.id]: action.event,
-                    eventList: [...state.eventList],
                 };
-                newState.eventList.push(action.event)
                 return newState;
             }
             return {
@@ -160,7 +164,6 @@ const eventReducer = (state = initialState, action) => {
                     ...state[action.event.id],
                     ...action.event
                 },
-                eventList: [...state.eventList],
             };
         case DELETE_EVENT:
             const newState = {
@@ -168,8 +171,6 @@ const eventReducer = (state = initialState, action) => {
                 eventList: [...state.eventList],
             }
             delete newState[action.eventId]
-            const idx = state.eventList.indexOf(action.event);
-            newState.eventList.splice(idx, 1);
 
             return newState;
         default:

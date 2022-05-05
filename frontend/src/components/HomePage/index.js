@@ -15,7 +15,7 @@ const HomePage = () => {
     }, [dispatch]);
 
     const eventsList = useSelector(state => {
-        return state.event.eventList;
+        return state.event;
     });
 
 
@@ -27,7 +27,7 @@ const HomePage = () => {
         <>
             <div className='banner'><div></div></div>
         <main>
-            {eventsList.map(event => {
+            {Object.values(eventsList).map(event => {
                 return (
                     <Link key={event.id} to={`/events/${event.id}`} className="event-card">
                             <div className="img-container"><img src={event.img} /></div>
@@ -39,7 +39,7 @@ const HomePage = () => {
                             <p>Host: {event.User.username}</p>
                     </Link>
                 )
-            })}
+            }).reverse()}
         </main>
         </>
     )

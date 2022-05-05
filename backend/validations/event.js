@@ -68,6 +68,11 @@ const capacity = check('capacity')
     .withMessage('Please, enter number of available tickets')
     .isInt()
     .withMessage('Capacity must be a number');
+const price = check('price')
+    .notEmpty()
+    .withMessage('Please, enter price per ticket')
+    .isInt({ min: 0 })
+    .withMessage('Price must be a number greater/equal to 0');
 const img = check('img')
     .notEmpty()
     .withMessage('Please, upload event image');
@@ -82,6 +87,7 @@ exports.validateCreate = [
     date,
     capacity,
     img,
+    price,
     handleValidationErrors
 ];
 
@@ -94,5 +100,6 @@ exports.validateEdit = [
     location,
     date,
     capacity,
+    price,
     handleValidationErrors
 ];

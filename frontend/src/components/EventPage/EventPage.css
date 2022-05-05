@@ -31,6 +31,8 @@
     padding: 40px 0;
     gap: 30px;
     width: 700px;
+    box-shadow: 0 0 10px rgb(46, 46, 46);
+    border-radius: 5px;
 }
 
 .event-page-header {
@@ -79,7 +81,7 @@
 }
 
 .btns-container button {
-    width: 61px;
+    width: 70px;
 }
 
 .event-tickets {
@@ -91,10 +93,14 @@
     align-items: center;
 }
 
-.reserve {
-    background-color: rgb(13, 133, 71);
-    color: white;
-    width: 200px;
+.available-tickets {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.available-tickets div:last-child {
+    font-size: smaller;
 }
 
 

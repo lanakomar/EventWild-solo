@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     location: { type: DataTypes.STRING, allowNull: false },
     date: { type: DataTypes.DATEONLY, allowNull: false },
     capacity: { type: DataTypes.INTEGER, allowNull: false },
+    price: { type: DataTypes.INTEGER, allowNull: false },
     img: { type: DataTypes.TEXT, allowNull: false },
   }, {});
   Event.associate = function(models) {

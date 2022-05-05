@@ -34,6 +34,7 @@ const EditEventForm = () => {
     const [location, setLocation] = useState(event.location);
     const [date, setDate] = useState(event.date);
     const [capacity, setCapacity] = useState(event.capacity);
+    const [price, setPrice] = useState(event.price);
     const [img, setImg] = useState("");
     const [category, setCategory] = useState(event.categoryId);
 
@@ -41,7 +42,7 @@ const EditEventForm = () => {
         dispatch(getOneEvent(eventId))
     }, [dispatch]);
 
-    useEffect( () => {
+    useEffect(() => {
         dispatch(getCategories());
     }, [dispatch]);
 
@@ -53,13 +54,13 @@ const EditEventForm = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
 
-            const type = img && img.type;
-            const toBase64 = file => new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = () => resolve(reader.result);
-                reader.onerror = error => reject(error);
-            });
+        const type = img && img.type;
+        const toBase64 = file => new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+        });
 
         const payload = {
             ...event,
@@ -68,6 +69,7 @@ const EditEventForm = () => {
             location,
             date,
             capacity,
+            price,
             img: img ? await toBase64(img) : null,
             categoryId: category,
             hostId: user.id,
@@ -169,30 +171,44 @@ const EditEventForm = () => {
                     />
                     <ErrorMessage label={"Date"} message={errorMessages.date} />
                 </div>
-                <div>
-                    <label htmlFor="capacity">Available tickets</label>
-                    <input
-                        type="number"
-                        min="0"
-                        id="capacity"
-                        name="capacity"
-                        value={capacity}
-                        onChange={(e) => setCapacity(e.target.value)}
-                    />
-                    <ErrorMessage label={"Capacity"} message={errorMessages.capacity} />
+                <div className='tickets-info'>
+                    <div>
+                        <label htmlFor="capacity">Available tickets</label>
+                        <input
+                            type="number"
+                            min="0"
+                            id="capacity"
+                            name="capacity"
+                            value={capacity}
+                            onChange={(e) => setCapacity(e.target.value)}
+                        />
+                        <ErrorMessage label={"Capacity"} message={errorMessages.capacity} />
+                    </div>
+                    <div>
+                        <label htmlFor="price">Ticket price</label>
+                        <input
+                            type="number"
+                            min="0"
+                            id="price"
+                            name="price"
+                            value={price}
+                            onChange={(e) => setPrice(e.target.value)}
+                        />
+                        <ErrorMessage label={"Price"} message={errorMessages.price} />
+                    </div>
                 </div>
                 <div className='file-input'>
                     <label htmlFor="img">Add Event Image<sup>*</sup></label>
                     <div className='input-and-img-container'>
-                    <input
-                        type="file"
-                        id="img"
-                        name="img"
-                        onChange={(e) => setImg(e.target.files[0])}
-                    />
-                    <div className="img-previous">
-                        <img src={event.img}/>
-                    </div>
+                        <input
+                            type="file"
+                            id="img"
+                            name="img"
+                            onChange={(e) => setImg(e.target.files[0])}
+                        />
+                        <div className="img-previous">
+                            <img src={event.img} />
+                        </div>
                     </div>
                     <ErrorMessage label={"Image"} message={errorMessages.img} />
                 </div>
@@ -203,7 +219,7 @@ const EditEventForm = () => {
                 <div className='explanation'>
                     <span>
                         <sup>*</sup>
-                         If want to change image
+                        If want to change image
                     </span>
                 </div>
             </form>

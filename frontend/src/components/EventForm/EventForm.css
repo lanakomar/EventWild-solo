@@ -6,7 +6,6 @@
     background-image: url(/public/images/bckg-eventForm.jpg);
     background-position: center;
     background-size: cover;
-    opacity: 0.6;
 }
 
 .form-page form {
@@ -21,7 +20,8 @@
     padding: 50px 100px;
 }
 
-form > div {
+form > div,
+.tickets-info div {
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -31,12 +31,23 @@ form > div > label {
     align-self: center;
 }
 
-form > div > input {
+form > div > input,
+.tickets-info input {
     height: 1.5em;
 }
 
 form > div > select {
     height: 2em;
+}
+
+.tickets-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.tickets-info div {
+    width: 200px;
 }
 
 form .button-container {

@@ -1,32 +1,26 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+
 
 import { Modal } from '../../context/Modal';
-import ConfirmedReservation from './ConfirmedReservation';
-import { reserveTicket } from '../../store/event';
+import ReservationForm from './ReservationForm';
+import './ReservationForm.css';
 
-const ReserveTicket = ({ eventId, userId }) => {
-    const dispatch = useDispatch();
-
+const ReserveTicket = ({ event, userId }) => {
     const [showModal, setShowModal] = useState(false);
-
-    const handleReserveClick = async (e) => {
-        e.preventDefault();
-        dispatch(reserveTicket(eventId, userId))
-            .then(() => setShowModal(true));
-    }
 
     return (
         <>
             <button
-                onClick={handleReserveClick}
+                onClick={() => setShowModal(true)}
                 className='button reserve'
                 >
                 Reserve a ticket
             </button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <ConfirmedReservation
+                    <ReservationForm
+                        event={event}
+                        userId={userId}
                         setShowModal={setShowModal} />
                 </Modal>
             )}
