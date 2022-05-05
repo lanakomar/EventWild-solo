@@ -173,7 +173,6 @@ const eventReducer = (state = initialState, action) => {
                 ...state
             }
             delete newState[action.eventId]
-
             return newState;
         default:
             return state;

@@ -115,6 +115,8 @@ nav > div {
     top: 72px;
     right: 30px;
     list-style: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .profile-dropdown li {
@@ -129,8 +131,18 @@ nav > div {
     background-color: transparent;
     width: 100%;
     border: none;
+    font-size: 1em;
 }
 
-.btn-logout:hover {
+.btn-logout:hover,
+.profile-dropdown .link a:hover {
     color: rgb(61, 100, 255);
+}
+
+.profile-dropdown .link a {
+    width: 100%;
+    text-align: center;
+    font-size: 1em;
+    text-decoration: none;
+    color: black;
 }

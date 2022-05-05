@@ -140,6 +140,15 @@ router.delete('/:id(\\d+)',
     asyncHandler(async (req, res) => {
         const eventId = req.params.id;
 
+        const tickets = await db.Ticket.findAll({
+            where: { eventId }
+        });
+
+        if (tickets.length > 0) {
+            await db.Ticket.destroy({ where: {eventId} });
+        }
+
+        //deleting event from Event table
         const eventToDelete = await db.Event.findByPk(eventId);
         if (!eventToDelete) throw new Error('Cannot find event');
 

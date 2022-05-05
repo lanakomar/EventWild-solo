@@ -10,6 +10,8 @@ import EventForm from "./components/EventForm";
 import EventPage from "./components/EventPage";
 import EditEventForm from "./components/EditEventForm";
 import PageNotFound from "./components/PageNotFound";
+import MyTicketsPage from "./components/MyTicketsPage";
+import MyEventsPage from "./components/MyEventsPage";
 
 function App() {
     const dispatch = useDispatch();
@@ -22,7 +24,7 @@ function App() {
         <>
             <Navigation isLoaded={isLoaded} />
             <Switch>
-                <Route exact path="/events">
+                <Route path={["/", "/events"]} exact>
                     <HomePage />
                 </Route>
                 <Route exact path="/events/new">
@@ -33,6 +35,12 @@ function App() {
                 </Route>
                 <Route exact path="/events/:eventId/edit">
                     <EditEventForm />
+                </Route>
+                <Route path="/:userId/events">
+                    <MyEventsPage />
+                </Route>
+                <Route path="/:userId/tickets">
+                    <MyTicketsPage />
                 </Route>
                 <Route path="/404" component={PageNotFound} />
                 <Redirect to="/404" />

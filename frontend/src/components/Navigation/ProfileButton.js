@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from 'react-redux';
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink, useHistory, Link } from "react-router-dom";
 
 import * as sessionActions from '../../store/session';
 import './Navigation.css';
@@ -44,6 +44,12 @@ function ProfileButton({ user }) {
                 </div>
                 {showMenu && (
                     <ul className="profile-dropdown">
+                        <li className="link">
+                            <Link to={`/${user.id}/events`}>My Events</Link>
+                        </li>
+                        <li className="link">
+                            <Link to={`/${user.id}/tickets`}>My Tickets</Link>
+                        </li>
                         <li>
                             <button className="btn-logout" onClick={logout}>Log Out</button>
                         </li>
