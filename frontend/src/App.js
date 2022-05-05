@@ -21,7 +21,7 @@ function App() {
         <>
             <Navigation isLoaded={isLoaded} />
             <Switch>
-                <Route exact path="/">
+                <Route exact path="/events">
                     <HomePage />
                 </Route>
                 <Route path="/events/new">

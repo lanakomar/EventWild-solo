@@ -31,7 +31,7 @@ export const getOneEvent = (eventId) => async dispatch => {
 };
 
 export const getEvents = () => async dispatch => {
-    const response = await fetch('/api/');
+    const response = await fetch('/api/events');
     if (response.ok) {
         const list = await response.json();
         dispatch(loadEvents(list));

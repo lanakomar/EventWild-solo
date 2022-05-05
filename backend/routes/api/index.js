@@ -17,15 +17,5 @@ router.use('/categories', categoriesRouter);
 
 router.use('/events', eventsRouter);
 
-// home page
-router.get('/', asyncHandler (async (req, res) => {
-    const eventsList = await db.Event.findAll({
-        include: [db.User, db.Category ],
-        order: [['createdAt', 'DESC']],
-        limit: 18
-    });
-
-    return res.json(eventsList);
-}));
 
 module.exports = router;

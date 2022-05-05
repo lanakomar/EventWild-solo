@@ -8,6 +8,16 @@ const { requireAuth } = require('../../utils/auth');
 
 const router = express.Router();
 
+// home page
+router.get('/', asyncHandler(async (req, res) => {
+    const eventsList = await db.Event.findAll({
+        include: [db.User, db.Category],
+        order: [['createdAt', 'DESC']],
+        limit: 18
+    });
+
+    return res.json(eventsList);
+}));
 
 router.post('/',
     requireAuth,
