@@ -38,7 +38,8 @@
 
 .signup-btn-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    flex-direction: row;
     margin-top: 20px;
 }
 
@@ -47,6 +48,7 @@
     background-color: rgba(202, 211, 220, 0.3);
     border-radius: 5px;
     border: 1px solid rgba(202, 211, 220, 0.6);
+    width: 70px;
 }
 
 .signup-btn-container button:hover {
