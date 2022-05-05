@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import './ReservationForm.css';
 import { reserveTicket } from '../../store/event';
 
-const ReservationForm = ({ event, userId, setShowModal }) => {
+const ReservationForm = ({ event, userId, setShowModal, setIsReserved }) => {
     const dispatch = useDispatch();
     const [errors, setErrors] = useState([]);
     const [numOfTickets, setNumOfTickets] = useState("");
@@ -21,7 +21,10 @@ const ReservationForm = ({ event, userId, setShowModal }) => {
             };
             setErrors([]);
             return dispatch(reserveTicket(event.id, payload))
-                .then(() => setShowModal(false));
+                .then(() => {
+                    setShowModal(false);
+                    setIsReserved(true);
+                });
         }
         return setErrors([`Limit of tickets: ${event.capacity}`]);
     }

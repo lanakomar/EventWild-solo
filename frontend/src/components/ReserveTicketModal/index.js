@@ -5,7 +5,7 @@ import { Modal } from '../../context/Modal';
 import ReservationForm from './ReservationForm';
 import './ReservationForm.css';
 
-const ReserveTicket = ({ event, userId }) => {
+const ReserveTicket = ({ event, userId, setIsReserved }) => {
     const [showModal, setShowModal] = useState(false);
 
     return (
@@ -21,6 +21,7 @@ const ReserveTicket = ({ event, userId }) => {
                     <ReservationForm
                         event={event}
                         userId={userId}
+                        setIsReserved={setIsReserved}
                         setShowModal={setShowModal} />
                 </Modal>
             )}

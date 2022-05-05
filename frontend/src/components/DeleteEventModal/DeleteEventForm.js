@@ -11,9 +11,9 @@ const DeleteEventForm = ({ event, user, setShowModal }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const deletedEvent = await dispatch(deleteEvent(user.id, event.id));
+        const deletedEvent = await dispatch(deleteEvent(event.id));
         if (deletedEvent) {
-            setShowModal(false);
+            history.push('/events');
         }
     }
 

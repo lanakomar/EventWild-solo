@@ -120,7 +120,8 @@ export const deleteEvent = (eventId) => async dispatch => {
 
     if (response.ok) {
         const deletedEvent = await response.json()
-        dispatch(deleteEventAction(deletedEvent.id, deletedEvent))
+        dispatch(deleteEventAction(deletedEvent.id, deletedEvent));
+        return deletedEvent;
     }
 }
 
@@ -169,8 +170,7 @@ const eventReducer = (state = initialState, action) => {
             };
         case DELETE_EVENT:
             const newState = {
-                ...state,
-                eventList: [...state.eventList],
+                ...state
             }
             delete newState[action.eventId]
 

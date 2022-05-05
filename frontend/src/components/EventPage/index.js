@@ -13,6 +13,8 @@ const EventPage = () => {
     const history = useHistory();
     const dispatch = useDispatch();
 
+    const [isReserved, setIsReserved] = useState(false);
+
     useEffect(() => {
         dispatch(getOneEvent(eventId));
     }, [dispatch]);
@@ -62,7 +64,14 @@ const EventPage = () => {
                             </div>
                         <div>Ticket price: ${event.price}</div>
                     </div>
-                    <ReserveTicket event={event} userId={user.id} />
+                    {!isReserved ?
+                    <ReserveTicket
+                        event={event}
+                        userId={user.id}
+                        setIsReserved={setIsReserved}
+                    />
+                    : (<p>Your ticket(s) was reserved!</p>)
+                    }
                 </div>
                 <div className="event-page-main">
                     <div className="event-page-main-left">
