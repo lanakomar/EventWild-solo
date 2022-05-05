@@ -69,8 +69,11 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     const event = await db.Event.findByPk(id, {
         include: [db.User, db.Category]
     });
-
-    return res.json(event);
+    if (event) {
+        return res.json(event);
+    } else {
+        return res.status(404).json({});
+    }
 }));
 
 router.patch('/:id(\\d+)',

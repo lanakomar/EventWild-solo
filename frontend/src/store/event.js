@@ -27,6 +27,8 @@ export const getOneEvent = (eventId) => async dispatch => {
     if (response.ok) {
         const event = await response.json();
         dispatch(addEvent(event));
+    } else {
+        window.location="/404"
     }
 };
 

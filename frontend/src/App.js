@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import {Redirect, Route, Switch } from "react-router-dom";
 
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import EventForm from "./components/EventForm";
 import EventPage from "./components/EventPage";
 import EditEventForm from "./components/EditEventForm";
+import PageNotFound from "./components/PageNotFound";
 
 function App() {
     const dispatch = useDispatch();
@@ -24,15 +25,17 @@ function App() {
                 <Route exact path="/events">
                     <HomePage />
                 </Route>
-                <Route path="/events/new">
+                <Route exact path="/events/new">
                     <EventForm />
                 </Route>
                 <Route exact path="/events/:eventId">
                     <EventPage />
                 </Route>
-                <Route path="/events/:eventId/edit">
+                <Route exact path="/events/:eventId/edit">
                     <EditEventForm />
                 </Route>
+                <Route path="/404" component={PageNotFound} />
+                <Redirect to="/404" />
             </Switch>
             <Footer />
         </>

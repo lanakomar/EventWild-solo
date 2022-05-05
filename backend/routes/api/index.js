@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 
-const db = require('../../db/models');
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const categoriesRouter = require('./categories.js');

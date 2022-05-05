@@ -15,8 +15,9 @@ const EditEventForm = () => {
     const dispatch = useDispatch();
 
     const event = useSelector(state => {
-        return state.event[eventId];
+        return state.event[eventId] || {};
     });
+
     const user = useSelector(state => {
         return state.session.user
     });
@@ -26,7 +27,6 @@ const EditEventForm = () => {
         return state.category;
     });
     const history = useHistory();
-
 
     const [errorMessages, setErrorMessages] = useState({});
     const [name, setName] = useState(event.name);
