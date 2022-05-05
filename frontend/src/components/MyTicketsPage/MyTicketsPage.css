@@ -1,4 +1,38 @@
 .my-tickets-container
  {
+     margin-top: 60px;
      height: 100%;
+ }
+
+ .my-tickets {
+     width: 55%;
+     margin: 0 auto;
+     border-collapse: collapse;
+ }
+
+ .my-tickets tr {
+    height: 45px;
+    text-align: center;
+    border-radius: 5px;
+ }
+
+ .qty {
+     text-align: center;
+ }
+
+ tbody tr:nth-child(odd) {
+     background-color: rgb(245, 222, 190);
+ }
+
+tbody tr:nth-child(even) {
+    background-color: rgba(255, 244, 229, 0.979);
+}
+
+tbody tr:nth-child(odd) button {
+    background-color: rgb(244, 199, 154);
+}
+
+ .my-tickets .button {
+     margin: 10px;
+     box-shadow: 0 0 5px grey;
  }

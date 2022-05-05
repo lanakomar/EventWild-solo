@@ -25,7 +25,7 @@ const MyTicketsPage = () => {
             <table className="my-tickets">
                 <thead>
                     <tr>
-                        <th>Name of Event</th>
+                        <th>Event Name</th>
                         <th>Reserved tickets</th>
                         <th></th>
                     </tr>
@@ -34,9 +34,10 @@ const MyTicketsPage = () => {
                     {Object.values(tickets).map(ticket => (
                         <tr key={ticket.id}>
                             <td>{ticket.Event.name}</td>
-                            <td>{ticket.qty}</td>
+                            <td className='qty'>{ticket.qty}</td>
                             <td>
                                 <button
+                                className='button'
                                     type="button"
                                     id={ticket.id}
                                     onClick={handleCancelReservation}
