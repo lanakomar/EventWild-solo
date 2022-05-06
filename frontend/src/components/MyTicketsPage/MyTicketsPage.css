@@ -1,58 +1,55 @@
-.my-tickets-container
- {
-     margin-top: 60px;
-     height: 100%;
- }
-
-.background {
+.my-tickets-container {
     height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    filter: blur(10px) brightness(.9);
-}
-
-.table-container {
-    width: 55%;
+    width: 70%;
     margin: 0 auto;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
- .my-tickets {
+.tickets-header {
+    margin-bottom: 20px;
+    font-size: larger;
+    color: white;
+    font-weight: bold;
+}
 
-     border-collapse: collapse;
-     border-style: hidden;
-     border-radius: 5px;
- }
+.tickets-header,
+.ticket-container {
+    display: grid;
+    grid-template-columns: 2fr repeat(2, 1fr);
+    column-gap: 10px;
+    justify-items: center;
+    align-items: center;
+    padding-left: 10px;
+}
 
- .my-tickets thead th {
-     color: white;
-     padding-bottom: 10px;
- }
+.ticket-container {
+    height: 70px;
+    border-radius: 35px;
+}
 
- .my-tickets tr {
-    height: 45px;
+.ticket-container div {
     text-align: center;
-    border-radius: 5px;
- }
-
- .qty {
-     text-align: center;
- }
-
- tbody tr:nth-child(odd) {
-     background-color: rgb(245, 222, 190);
- }
-
-tbody tr:nth-child(even) {
-    background-color: rgba(255, 244, 229, 0.979);
 }
 
-tbody tr:nth-child(odd) button {
+.my-tickets-container .ticket-container:nth-child(odd) {
+    background-color: rgba(245, 222, 190, 0.9);
+}
+
+.my-tickets-container .ticket-container:nth-child(even) {
+    background-color: rgba(255, 244, 229, 0.9);
+}
+
+.ticket-container .button {
+    text-decoration: none;
+    color: black;
+    margin: 10px;
+    box-shadow: 0 0 5px grey;
+
+}
+
+.my-tickets-container .ticket-container:nth-child(odd) .button {
     background-color: rgb(244, 199, 154);
 }
-
- .my-tickets .button {
-     margin: 10px;
-     box-shadow: 0 0 5px grey;
- }

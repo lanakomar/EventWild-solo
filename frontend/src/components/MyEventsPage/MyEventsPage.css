@@ -12,21 +12,6 @@
     gap: 10px;
 }
 
-.events-header {
-    margin-bottom: 20px;
-    font-size: larger;
-    color: white;
-    font-weight: bold;
-}
-
-.my-events-container .event-container:nth-child(odd) {
-    background-color: rgba(245, 222, 190, 0.9);
-}
-
-.my-events-container .event-container:nth-child(even) {
-    background-color: rgba(255, 244, 229, 0.9);
-}
-
 .background {
     height: 100%;
     position: absolute;
@@ -39,12 +24,20 @@
 .events-header,
 .event-container {
     display: grid;
-    grid-template-columns: repeat(4, 25%);
+    grid-template-columns: 2fr repeat(3, 1fr);
     column-gap: 10px;
     justify-items: center;
     align-items: center;
     padding-left: 10px;
 }
+
+.events-header {
+    margin-bottom: 20px;
+    font-size: larger;
+    color: white;
+    font-weight: bold;
+}
+
 
 .event-container {
     height: 70px;
@@ -55,6 +48,14 @@
     text-align: center;
 }
 
+.my-events-container .event-container:nth-child(odd) {
+    background-color: rgba(245, 222, 190, 0.9);
+}
+
+.my-events-container .event-container:nth-child(even) {
+    background-color: rgba(255, 244, 229, 0.9);
+}
+
 .event-container .button {
     text-decoration: none;
     color: black;
@@ -62,7 +63,6 @@
     box-shadow: 0 0 5px grey;
 
 }
-
 
 .my-events-container .event-container:nth-child(odd) .button {
         background-color: rgb(244, 199, 154);

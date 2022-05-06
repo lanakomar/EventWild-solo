@@ -21,36 +21,30 @@ const MyTicketsPage = () => {
     }
 
     return (
-        <div className="my-tickets-container">
+        <div className="wrapper">
             <img className='background' src="/images/bckg-eventForm.jpg" />
-            <div className='table-container'>
-                <table className="my-tickets">
-                    <thead>
-                        <tr>
-                            <th>Event Name</th>
-                            <th>Reserved tickets</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {Object.values(tickets).map(ticket => (
-                            <tr key={ticket.id}>
-                                <td>{ticket.Event.name}</td>
-                                <td className='qty'>{ticket.qty}</td>
-                                <td>
-                                    <button
-                                        className='button'
-                                        type="button"
-                                        id={ticket.id}
-                                        onClick={handleCancelReservation}
-                                    >
-                                        Cancel Reservation
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+            <div className='my-tickets-container'>
+                <div className='tickets-header'>
+                    <div>Event Name</div>
+                    <div>Reserved tickets</div>
+                    <div></div>
+                </div>
+                {Object.values(tickets).map(ticket => (
+                    <div className='ticket-container' key={ticket.id}>
+                        <div>{ticket.Event.name}</div>
+                        <div>{ticket.qty}</div>
+                        <div>
+                            <button
+                                className='button'
+                                type="button"
+                                id={ticket.id}
+                                onClick={handleCancelReservation}
+                            >
+                                Cancel Reservation
+                            </button>
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     )
