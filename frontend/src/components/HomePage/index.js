@@ -30,7 +30,7 @@ const HomePage = () => {
             {Object.values(eventsList).map(event => {
                 return (
                     <Link key={event.id} to={`/events/${event.id}`} className="event-card">
-                            <div className="img-container"><img src={event.img} /></div>
+                            <div className="img-container"><img src={`data:${event.img}`} /></div>
                             <h3>{event.name}</h3>
                             <p className='category'>{event.Category.type}</p>
                             <p className='description'>{event.description}</p>

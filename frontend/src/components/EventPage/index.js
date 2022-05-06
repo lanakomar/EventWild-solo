@@ -37,7 +37,7 @@ const EventPage = () => {
             <div className="blurred-banner"><div></div></div>
             <div className="event-page">
                 <div className="event-page-header">
-                    <div className="event-img"><img src={event.img} /></div>
+                    <div className="event-img"><img src={`data:${event.img}`}  /></div>
                     <div className="info-container">
                         <div className="event-info">{event.name}</div>
                         <div className='category'>{event.Category.type}</div>

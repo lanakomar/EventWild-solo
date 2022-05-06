@@ -42,8 +42,8 @@ function App() {
                 <Route path="/:userId/tickets">
                     <MyTicketsPage />
                 </Route>
-                {/* <Route path="/404" component={PageNotFound} />
-                <Redirect to="/404" /> */}
+                <Route path="/404" component={PageNotFound} />
+                <Redirect to="/404" />
             </Switch>
             <Footer />
         </>

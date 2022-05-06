@@ -34,7 +34,7 @@ const EditEventForm = () => {
     const [date, setDate] = useState(event.date);
     const [capacity, setCapacity] = useState(event.capacity);
     const [price, setPrice] = useState(event.price);
-    const [img, setImg] = useState("");
+    const [img, setImg] = useState(event.img);
     const [category, setCategory] = useState(event.categoryId);
 
     useEffect(() => {
@@ -53,7 +53,6 @@ const EditEventForm = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        const type = img && img.type;
         const toBase64 = file => new Promise((resolve, reject) => {
             const reader = new FileReader();
             reader.readAsDataURL(file);
@@ -69,11 +68,9 @@ const EditEventForm = () => {
             date,
             capacity,
             price,
-            img: img ? await toBase64(img) : null,
+            img: img ? await toBase64(img) : img,
             categoryId: category,
             hostId: user.id,
-            type,
-            imgUrl: img ? null : event.img
         };
 
         let editedEvent;
@@ -204,7 +201,7 @@ const EditEventForm = () => {
                             onChange={(e) => setImg(e.target.files[0])}
                         />
                         <div className="img-previous">
-                            <img src={event.img} />
+                            <img src={`data:${event.img}`}  />
                         </div>
                     </div>
                     <ErrorMessage label={"Image"} message={errorMessages.img} />

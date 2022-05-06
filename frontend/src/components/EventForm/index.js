@@ -42,7 +42,6 @@ const EventForm = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        const type = img && img.type;
         const toBase64 = file => new Promise((resolve, reject) => {
             const reader = new FileReader();
             reader.readAsDataURL(file);
@@ -60,7 +59,6 @@ const EventForm = () => {
             img: img ? await toBase64(img) : null,
             categoryId: category,
             hostId: user.id,
-            type
         };
 
         let createdEvent;
