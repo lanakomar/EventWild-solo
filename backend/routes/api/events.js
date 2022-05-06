@@ -1,6 +1,6 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const mime = require('mime');
+// const mime = require('mime');
 
 const db = require('../../db/models');
 const eventValidattion = require('../../validations/event');
@@ -31,17 +31,8 @@ router.post('/',
             capacity,
             categoryId,
             hostId,
-            type,
+            img,
             price } = req.body;
-        const imgType = mime.getExtension(type);
-
-        const base64Data = req.body.img.split("base64,")[1];
-        const imgName = Date.now();
-        require("fs").writeFile(`public/images/${imgName}.${imgType}`, base64Data, 'base64', function (err) {
-            console.log(err);
-        });
-
-        const url = `/images/${imgName}.${imgType}`;
 
 
         const eventToCreate = {
@@ -53,7 +44,7 @@ router.post('/',
             price,
             categoryId,
             hostId,
-            img: url
+            img
         }
 
         const eventNew = await db.Event.create(eventToCreate);
@@ -65,6 +56,7 @@ router.post('/',
     }));
 
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
+
     const id = req.params.id;
     const event = await db.Event.findByPk(id, {
         include: [db.User, db.Category]
@@ -80,6 +72,7 @@ router.patch('/:id(\\d+)',
     requireAuth,
     eventValidattion.validateEdit,
     asyncHandler(async (req, res) => {
+
         const id = req.params.id;
         const { name,
             description,
@@ -90,24 +83,8 @@ router.patch('/:id(\\d+)',
             categoryId,
             hostId,
             img,
-            type,
             imgUrl
         } = req.body;
-
-        let url;
-        if (img) {
-            const imgType = mime.getExtension(type);
-
-            const base64Data = req.body.img.split("base64,")[1];
-            const imgName = Date.now();
-            require("fs").writeFile(`public/images/${imgName}.${imgType}`, base64Data, 'base64', function (err) {
-                console.log(err);
-            });
-
-            url = `/images/${imgName}.${imgType}`;
-        } else {
-            url = imgUrl;
-        }
 
         const eventToUpdate = {
             name,
@@ -118,7 +95,7 @@ router.patch('/:id(\\d+)',
             price,
             categoryId,
             hostId,
-            img: url
+            img
         }
 
         await db.Event.update(
