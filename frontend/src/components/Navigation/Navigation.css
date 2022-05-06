@@ -4,8 +4,13 @@ nav {
     flex-direction: row;
     justify-content: space-between;
     padding: 0 30px;
-    height: 72px;
+    height: 90px;
     align-items: center;
+}
+
+nav .logo {
+    height: 160px;
+    margin-left: 100px;
 }
 
 nav > div {
@@ -45,6 +50,7 @@ nav > div {
     box-sizing: border-box;
     padding: 0 10px;
     height: 100%;
+    padding-bottom: 5px;
 }
 
 
@@ -64,6 +70,7 @@ nav > div {
     height: 100%;
     box-sizing: border-box;
     width: 220px;
+    justify-content: center;
 }
 
 .loggedin-container:hover,
@@ -85,7 +92,6 @@ nav > div {
     gap: 15px;
     align-items: center;
     justify-content: center;
-    margin: 10px;
 }
 
 .loggedin-user span {
@@ -112,7 +118,7 @@ nav > div {
     background: white;
     width: 220px;
     position: absolute;
-    top: 72px;
+    top: 90px;
     right: 30px;
     list-style: none;
     border-bottom-left-radius: 5px;

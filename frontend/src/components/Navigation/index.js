@@ -45,7 +45,7 @@ const Navigation = (isLoaded) => {
 
     return (
         <nav>
-            <NavLink exact to="/events">Home</NavLink>
+            <NavLink exact to="/events"><img className="logo" src="/images/logo.svg" /></NavLink>
             <div>
                 {isLoaded && sessionLinks}
             </div>
