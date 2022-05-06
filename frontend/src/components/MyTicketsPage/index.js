@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 
 import { getTickets, cancelReservation } from '../../store/ticket';
 import './MyTicketsPage.css';
 
 const MyTicketsPage = () => {
+    const { userId } = useParams();
+
 
     const dispatch = useDispatch();
 
-    const user = useSelector(state => state.session.user);
+    // const user = useSelector(state => state.session.user);
     const tickets = useSelector(state => state.ticket);
 
     useEffect(() => {
-        dispatch(getTickets(user.id));
+        dispatch(getTickets(userId));
     }, [dispatch]);
 
     const handleCancelReservation = async (e) => {
