@@ -163,22 +163,28 @@ router.post('/:id(\\d+)/tickets',
         const id = req.params.id;
 
         const { userId, eventId, qty, capacity } = req.body;
-        const ticketToCreate = { userId, eventId, qty };
 
-        const newTicket = await db.Ticket.create(ticketToCreate);
+        const eventToUpdate =  await db.Event.findByPk(eventId);
 
-        if (newTicket) {
-            const newCapacity = capacity - qty;
-            console.log(newCapacity)
-            await db.Event.update(
-                { capacity: newCapacity },
-                { where: { id } }
-            )
-            const updatedEvent = await db.Event.findByPk(eventId);
+        if (eventToUpdate.capacity >= qty) {
+            const ticketToCreate = { userId, eventId, qty };
 
-            res.json(updatedEvent)
+            const newTicket = await db.Ticket.create(ticketToCreate);
+
+            if (newTicket) {
+                const newCapacity = capacity - qty;
+
+                await db.Event.update(
+                    { capacity: newCapacity },
+                    { where: { id } }
+                )
+                const updatedEvent = await db.Event.findByPk(eventId);
+
+                res.json(updatedEvent)
+            }
+        } else {
+            return res.status(410).json({ message: "There is not enough tickets" })
         }
-
     }));
 
 module.exports = router;

@@ -24,7 +24,7 @@ const ReservationForm = ({ event, userId, setShowModal, setIsReserved }) => {
                 .then(() => {
                     setShowModal(false);
                     setIsReserved(true);
-                });
+                })
         }
         return setErrors([`Limit of tickets: ${event.capacity}`]);
     }

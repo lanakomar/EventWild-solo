@@ -12,3 +12,65 @@
     display: flex;
     align-items: center;
 }
+
+.footer .logo-tech {
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    margin-right: 5px;
+}
+
+.react {
+    background-image: url("/public/images/logos/react-redux-logo.png");
+    background-size: cover;
+}
+
+.redux {
+    background-image: url("/public/images/logos/react-redux-logo.png");
+    background-size: cover;
+    background-position: 100%;
+}
+
+.html {
+    background-image: url("/public/images/logos/html5-logo.png");
+    background-size: contain;
+}
+
+.css {
+    background-image: url("/public/images/logos/css-logo.png");
+    background-size: cover;
+}
+
+.js {
+    background-image: url("/public/images/logos/JS-logo.png");
+    background-size: contain;
+}
+
+.footer .node {
+    background-image: url("/public/images/logos/node-logo.png");
+    background-size: contain;
+    width: 70px;
+    margin-top: 15px;
+}
+
+.ex {
+    background-image: url("/public/images/logos/ex-logo.png");
+    background-size: contain;
+}
+
+.sql {
+    background-image: url("/public/images/logos/sql-logo.png");
+    background-size: contain;
+}
+
+.footer .postgres {
+    background-image: url("/public/images/logos/postgres-logo.png");
+    background-size: contain;
+    width: 120px;
+    margin-top: 10px;
+}
+
+.git {
+    background-image: url("/public/images/logos/git-logo.png");
+    background-size: contain;
+}

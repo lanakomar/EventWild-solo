@@ -62,7 +62,7 @@ export const createEvent = (payload) => async dispatch => {
                 let errorJSON;
                 error = await response.text();
                 try {
-                    // Check if the error is JSON, i.e., from the Pokemon server. If so,
+                    // Check if the error is JSON. If so,
                     // don't throw error yet or it will be caught by the following catch
                     errorJSON = JSON.parse(error);
                 }
@@ -98,7 +98,7 @@ export const editEvent = (payload, eventId)=> async dispatch => {
                 let errorJSON;
                 error = await response.text();
                 try {
-                    // Check if the error is JSON, i.e., from the Pokemon server. If so,
+                    // Check if the error is JSON. If so,
                     // don't throw error yet or it will be caught by the following catch
                     errorJSON = JSON.parse(error);
                 }
@@ -126,15 +126,17 @@ export const deleteEvent = (eventId) => async dispatch => {
 }
 
 export const reserveTicket = (eventId, payload) => async dispatch => {
-    const response = await csrfFetch(`/api/events/${eventId}/tickets`, {
-        method: "POST",
-        body: JSON.stringify(payload)
-    });
+    try {
+        const response = await csrfFetch(`/api/events/${eventId}/tickets`, {
+            method: "POST",
+            body: JSON.stringify(payload)
+        });
 
-    if (response.ok) {
-        console.log("success")
         const event = await response.json();
         dispatch(addEvent(event));
+    } catch (response) {
+        const res = await response.json();
+        alert(res.message);
     }
 }
 
