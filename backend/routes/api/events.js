@@ -159,7 +159,7 @@ router.delete('/:id(\\d+)',
 router.post('/:id(\\d+)/tickets',
     requireAuth,
     asyncHandler(async (req, res) => {
-        console.log()
+
         const id = req.params.id;
 
         const { userId, eventId, qty, capacity } = req.body;

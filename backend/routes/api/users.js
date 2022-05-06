@@ -54,7 +54,7 @@ router.post('/',
 );
 
 //get tickets for specified user
-router.get('/:id/tickets',
+router.get('/:id(\\d+)/tickets',
     requireAuth,
     asyncHandler  (async(req, res) => {
         const userId = req.params.id;
@@ -74,7 +74,7 @@ router.get('/:id/tickets',
 }));
 
 //get events where user is the host
-router.get('/:id/events',
+router.get('/:id(\\d+)/events',
     requireAuth,
     asyncHandler (async (req, res) => {
         const hostId = req.params.id;

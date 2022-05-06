@@ -11,6 +11,7 @@ nav {
 nav .logo {
     height: 160px;
     margin-left: 100px;
+    margin-top: 15px;
 }
 
 nav > div {
