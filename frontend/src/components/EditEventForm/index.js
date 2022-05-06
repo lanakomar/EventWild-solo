@@ -22,7 +22,6 @@ const EditEventForm = () => {
         return state.session.user
     });
 
-    console.log(user);
     const categoriesList = useSelector(state => {
         return state.category;
     });
@@ -76,8 +75,6 @@ const EditEventForm = () => {
             type,
             imgUrl: img ? null : event.img
         };
-
-        console.log(payload);
 
         let editedEvent;
         try {

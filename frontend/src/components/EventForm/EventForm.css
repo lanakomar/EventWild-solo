@@ -81,3 +81,8 @@ form .file-input input::-webkit-file-upload-button {
     color: rgb(61, 100, 255);
     opacity: 1;
 }
+
+
+.required-fields {
+    font-size: smaller;
+}

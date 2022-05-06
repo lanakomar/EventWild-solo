@@ -80,7 +80,8 @@ const EventForm = () => {
         }
     }
 
-    const handleCancelClick = () => {
+    const handleCancelClick = (e) => {
+        e.preventDefault();
         history.push("/");
     }
 
@@ -90,7 +91,7 @@ const EventForm = () => {
                 <h2>Create Event</h2>
                 <ErrorMessage message={errorMessages.overall} />
                 <div>
-                    <label htmlFor="name">Event Name</label>
+                    <label htmlFor="name">Event Name<sup>*</sup></label>
                     <input
                         type="text"
                         id="name"
@@ -101,7 +102,7 @@ const EventForm = () => {
                     <ErrorMessage label={"Name"} message={errorMessages.name} />
                 </div>
                 <div>
-                    <label htmlFor="categoryId">Event Category</label>
+                    <label htmlFor="categoryId">Event Category<sup>*</sup></label>
                     <select
                         name="categoryId"
                         id="categoryId"
@@ -123,7 +124,7 @@ const EventForm = () => {
                     <ErrorMessage label={"Category"} message={errorMessages.categoryId} />
                 </div>
                 <div>
-                    <label htmlFor="description">Event Description</label>
+                    <label htmlFor="description">Event Description<sup>*</sup></label>
                     <textarea
                         id="description"
                         name="description"
@@ -133,7 +134,7 @@ const EventForm = () => {
                     <ErrorMessage label={"Description"} message={errorMessages.description} />
                 </div>
                 <div>
-                    <label htmlFor="location">Event Location</label>
+                    <label htmlFor="location">Event Location<sup>*</sup></label>
                     <input
                         type="text"
                         id="location"
@@ -145,7 +146,7 @@ const EventForm = () => {
                     <ErrorMessage label={"Location"} message={errorMessages.location} />
                 </div>
                 <div>
-                    <label htmlFor="date">Event Date</label>
+                    <label htmlFor="date">Event Date<sup>*</sup></label>
                     <input
                         type="date"
                         id="date"
@@ -158,7 +159,7 @@ const EventForm = () => {
                 </div>
                 <div className='tickets-info'>
                     <div>
-                        <label htmlFor="capacity">Available tickets</label>
+                        <label htmlFor="capacity">Available tickets<sup>*</sup></label>
                         <input
                             type="number"
                             min="0"
@@ -170,7 +171,7 @@ const EventForm = () => {
                         <ErrorMessage label={"Capacity"} message={errorMessages.capacity} />
                     </div>
                     <div>
-                        <label htmlFor="price">Ticket price</label>
+                        <label htmlFor="price">Ticket price<sup>*</sup></label>
                         <input
                             type="number"
                             min="0"
@@ -183,7 +184,7 @@ const EventForm = () => {
                     </div>
                 </div>
                 <div className='file-input'>
-                    <label htmlFor="img">Add Event Image</label>
+                    <label htmlFor="img">Add Event Image<sup>*</sup></label>
                     <input
                         type="file"
                         id="img"
@@ -196,6 +197,7 @@ const EventForm = () => {
                     <button className="button" type='submit'>Create Event</button>
                     <button className="button" onClick={handleCancelClick}>Cancel</button>
                 </div>
+                <div className='required-fields'><span><sup>*</sup> - required fields</span></div>
             </form>
         </div>
     )
