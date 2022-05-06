@@ -10,12 +10,13 @@ const ReserveTicket = ({ event, userId, setIsReserved }) => {
 
     return (
         <>
-            <button
+            {userId &&
+            (<button
                 onClick={() => setShowModal(true)}
                 className='button reserve'
                 >
                 Reserve a ticket
-            </button>
+            </button>)}
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <ReservationForm

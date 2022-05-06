@@ -23,7 +23,7 @@ const EventPage = () => {
     const user = useSelector(state => state.session.user);
 
 
-    if (!event || !user) {
+    if (!event) {
         return null;
     }
 
@@ -41,11 +41,11 @@ const EventPage = () => {
                     <div className="info-container">
                         <div className="event-info">{event.name}</div>
                         <div className='category'>{event.Category.type}</div>
-                        <div className="btns-container" hidden={event.hostId === user.id ? false : true}>
+                        <div className="btns-container" hidden={event.hostId === user?.id ? false : true}>
                             <button
                                 onClick={handleEditClick}
                                 className='button'
-                                hidden={event.hostId === user.id ? false : true}
+                                hidden={event.hostId === user?.id ? false : true}
                             >
                                 Edit
                             </button>
@@ -67,7 +67,7 @@ const EventPage = () => {
                     {!isReserved ?
                     <ReserveTicket
                         event={event}
-                        userId={user.id}
+                        userId={user?.id}
                         setIsReserved={setIsReserved}
                     />
                     : (<p>Your ticket(s) was reserved!</p>)

@@ -10,7 +10,7 @@ const DeleteEventModal = ({event, user}) => {
         <>
             <button
                 className='button'
-                hidden={event.hostId === user.id ? false : true}
+                hidden={event.hostId === user?.id ? false : true}
                 onClick={() => setShowModal(true)}
             >
                 Delete
