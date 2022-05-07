@@ -11,13 +11,13 @@ const MyEventsPage = () => {
 
     useEffect(() => {
         dispatch(getUserEvents(userId));
-    }, [dispatch]);
+    }, [dispatch, userId]);
 
     const eventList = useSelector(state => state.userEvents);
 
     return (
         <div className='wrapper'>
-            <img className='background' src="/images/bckg-eventForm.jpg" />
+            <img className='background' src="/images/bckg-eventForm.jpg" alt="" />
             <div className="my-events-container">
                 <div className='events-header'>
                     <div>Event Name</div>

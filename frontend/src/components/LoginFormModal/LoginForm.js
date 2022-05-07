@@ -4,9 +4,6 @@ import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import './LoginForm.css';
 
-import { ValidationError } from '../../utils/validationError';
-import ErrorMessage from '../ErrorMessage';
-
 const LoginForm = ({ setShowModal }) => {
     const dispatch = useDispatch();
     const [credential, setCredential] = useState('');

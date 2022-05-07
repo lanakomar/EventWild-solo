@@ -6,6 +6,16 @@ EventWild is a full stack application that allows users to browse and reserve ti
 
 ### Repo - https://github.com/lanakomar/EventWild-solo
 
+## Getting Development Environment Up And Running
+- Git Clone the repo to your local machine
+- Install Dependencies:  run: 'npm install'
+- Create a '.env' file that mirrors the '.env.example' file
+- Create a user in your local postgreSQL database
+- Then use the 'npx dotenv sequelize [suffix]' command with each suffix in order: 'create:db', 'db:migrate', 'db:seed:all'
+- Start server:
+    1. cd into backend folder, run npm start;
+    2. cd into frintend folder, run npm start
+
 ## Application Architecture
 
 EventWild is built on React/Redux frontend with an Express backend, using PostgreSQL as a database.

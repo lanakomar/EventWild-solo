@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 
@@ -11,12 +11,11 @@ const MyTicketsPage = () => {
 
     const dispatch = useDispatch();
 
-    // const user = useSelector(state => state.session.user);
     const tickets = useSelector(state => state.ticket);
 
     useEffect(() => {
         dispatch(getTickets(userId));
-    }, [dispatch]);
+    }, [dispatch, userId]);
 
     const handleCancelReservation = async (e) => {
         const ticketId = e.target.id;
@@ -25,7 +24,7 @@ const MyTicketsPage = () => {
 
     return (
         <div className="wrapper">
-            <img className='background' src="/images/bckg-eventForm.jpg" />
+            <img className='background' src="/images/bckg-eventForm.jpg" alt="" />
             <div className='my-tickets-container'>
                 <div className='tickets-header'>
                     <div>Event Name</div>

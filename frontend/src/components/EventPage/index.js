@@ -17,7 +17,7 @@ const EventPage = () => {
 
     useEffect(() => {
         dispatch(getOneEvent(eventId));
-    }, [dispatch]);
+    }, [dispatch, eventId]);
 
     const event = useSelector(state => state.event[eventId]);
     const user = useSelector(state => state.session.user);
@@ -37,7 +37,7 @@ const EventPage = () => {
             <div className="blurred-banner"><div></div></div>
             <div className="event-page">
                 <div className="event-page-header">
-                    <div className="event-img"><img src={`data:${event.img}`}  /></div>
+                    <div className="event-img"><img src={`data:${event.img}`} alt={`${event.name}`}  /></div>
                     <div className="info-container">
                         <div className="event-info">{event.name}</div>
                         <div className='category'>{event.Category.type}</div>

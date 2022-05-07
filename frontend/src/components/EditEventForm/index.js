@@ -39,7 +39,7 @@ const EditEventForm = () => {
 
     useEffect(() => {
         dispatch(getOneEvent(eventId))
-    }, [dispatch]);
+    }, [dispatch, eventId]);
 
     useEffect(() => {
         dispatch(getCategories());
@@ -201,7 +201,7 @@ const EditEventForm = () => {
                             onChange={(e) => setImg(e.target.files[0])}
                         />
                         <div className="img-previous">
-                            <img src={`data:${event.img}`}  />
+                            <img src={`data:${event.img}`} alt={`${event.name}`}  />
                         </div>
                     </div>
                     <ErrorMessage label={"Image"} message={errorMessages.img} />
