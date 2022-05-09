@@ -36,6 +36,7 @@ const EditEventForm = () => {
     const [price, setPrice] = useState(event.price);
     const [img, setImg] = useState(event.img);
     const [category, setCategory] = useState(event.categoryId);
+    const [isChanged, setIsChanged] = useState(false);
 
     useEffect(() => {
         dispatch(getOneEvent(eventId))
@@ -68,7 +69,7 @@ const EditEventForm = () => {
             date,
             capacity,
             price,
-            img: img ? await toBase64(img) : img,
+            img: isChanged ? await toBase64(img) : img,
             categoryId: category,
             hostId: user.id,
         };
@@ -198,7 +199,10 @@ const EditEventForm = () => {
                             type="file"
                             id="img"
                             name="img"
-                            onChange={(e) => setImg(e.target.files[0])}
+                            onChange={(e) => {
+                                setImg(e.target.files[0])
+                                setIsChanged(true)
+                            }}
                         />
                         <div className="img-previous">
                             <img src={`data:${event.img}`} alt={`${event.name}`}  />
