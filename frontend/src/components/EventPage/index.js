@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import DeleteEventModal from '../DeleteEventModal';
 import ReserveTicket from '../ReserveTicketModal';
+import EditEventModal from '../EditEventModal'
 import { getOneEvent } from '../../store/event';
 import './EventPage.css';
 
 
 const EventPage = () => {
     const { eventId } = useParams();
-    const history = useHistory();
     const dispatch = useDispatch();
 
     const [isReserved, setIsReserved] = useState(false);
@@ -27,11 +27,6 @@ const EventPage = () => {
         return null;
     }
 
-    const handleEditClick = () => {
-        history.push(`/events/${eventId}/edit`);
-    }
-
-
     return (
         <div className='container'>
             <div className="blurred-banner"><div></div></div>
@@ -42,13 +37,10 @@ const EventPage = () => {
                         <div className="event-info">{event.name}</div>
                         <div className='category'>{event.Category.type}</div>
                         <div className="btns-container" hidden={event.hostId === user?.id ? false : true}>
-                            <button
-                                onClick={handleEditClick}
-                                className='button'
-                                hidden={event.hostId === user?.id ? false : true}
-                            >
-                                Edit
-                            </button>
+                            <EditEventModal
+                                event={event}
+                                user={user}
+                            />
                             <DeleteEventModal
                                 event={event}
                                 user={user}

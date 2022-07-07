@@ -8,16 +8,22 @@ import HomePage from "./components/HomePage";
 import Footer from "./components/Footer";
 import EventForm from "./components/EventForm";
 import EventPage from "./components/EventPage";
-import EditEventForm from "./components/EditEventForm";
 import PageNotFound from "./components/PageNotFound";
 import MyTicketsPage from "./components/MyTicketsPage";
 import MyEventsPage from "./components/MyEventsPage";
+import { getEvents } from './store/event';
+
 
 function App() {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
+
     useEffect(() => {
         dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(getEvents());
     }, [dispatch]);
 
     return (
@@ -32,9 +38,6 @@ function App() {
                 </Route>
                 <Route exact path="/events/:eventId">
                     <EventPage />
-                </Route>
-                <Route exact path="/events/:eventId/edit">
-                    <EditEventForm />
                 </Route>
                 <Route path="/:userId/events">
                     <MyEventsPage />

@@ -22,6 +22,7 @@ const deleteEventAction = (eventId, event) => ({
 });
 
 export const getOneEvent = (eventId) => async dispatch => {
+    console.log("get one event")
     const response = await fetch(`/api/events/${eventId}`);
 
     if (response.ok) {

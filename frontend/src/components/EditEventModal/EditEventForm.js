@@ -1,31 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
 
 import { ValidationError } from '../../utils/validationError';
 import ErrorMessage from '../ErrorMessage';
-import { editEvent, getOneEvent } from '../../store/event'
+import { editEvent } from '../../store/event'
 import { getCategories } from '../../store/category';
 import './EditEventForm.css';
 
 
 
-const EditEventForm = () => {
-    const { eventId } = useParams();
+const EditEventForm = ({ event, user, setShowModal }) => {
     const dispatch = useDispatch();
-
-    const event = useSelector(state => {
-        return state.event[eventId] || {};
-    });
-
-    const user = useSelector(state => {
-        return state.session.user
-    });
 
     const categoriesList = useSelector(state => {
         return state.category;
     });
-    const history = useHistory();
 
     const [errorMessages, setErrorMessages] = useState({});
     const [name, setName] = useState(event.name);
@@ -38,13 +27,11 @@ const EditEventForm = () => {
     const [category, setCategory] = useState(event.categoryId);
     const [isChanged, setIsChanged] = useState(false);
 
-    useEffect(() => {
-        dispatch(getOneEvent(eventId))
-    }, [dispatch, eventId]);
 
     useEffect(() => {
         dispatch(getCategories());
     }, [dispatch]);
+
 
 
     if (!categoriesList || !user || !event) {
@@ -76,7 +63,7 @@ const EditEventForm = () => {
 
         let editedEvent;
         try {
-            editedEvent = await dispatch(editEvent(payload, eventId));
+            editedEvent = await dispatch(editEvent(payload, event.id));
         } catch (error) {
             if (error instanceof ValidationError) {
                 setErrorMessages(error.errors);
@@ -86,14 +73,14 @@ const EditEventForm = () => {
         }
 
         if (editedEvent) {
-            history.push(`/events/${editedEvent.id}`)
+            setShowModal(false)
         }
 
     }
 
     const handleCancelClick = (e) => {
         e.preventDefault();
-        history.push(`/events/${eventId}`);
+        setShowModal(false)
     };
 
     return (
