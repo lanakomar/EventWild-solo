@@ -158,6 +158,7 @@ nav > div {
 @media screen and (max-width: 450px) {
     nav .logo {
         margin-left: 0;
+        height: 100px;
     }
 
     .btn-nav {
