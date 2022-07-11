@@ -81,3 +81,14 @@ main {
     color: rgb(176, 8, 8);
     font-weight: bold;
 }
+
+
+@media screen and (max-width: 450px) {
+    .event-card img {
+        height: 100px;
+    }
+
+    .event-card {
+        width: 350px;
+    }
+}

@@ -153,3 +153,27 @@ nav > div {
     text-decoration: none;
     color: black;
 }
+
+
+@media screen and (max-width: 450px) {
+    nav .logo {
+        margin-left: 0;
+    }
+
+    .btn-nav {
+        width: 60px;
+    }
+
+    .loggedin-container {
+        width: auto;
+    }
+
+    .user-btn {
+        width: 25px;
+        height: 25px;
+    }
+
+    .create-event-container a {
+        text-align: center;
+    }
+}

@@ -53,3 +53,16 @@
 .my-tickets-container .ticket-container:nth-child(odd) .button {
     background-color: rgb(244, 199, 154);
 }
+
+
+@media screen and (max-width: 450px) {
+    .tickets-header {
+        margin-top: 10px;
+    }
+
+    .ticket-container {
+        height: auto;
+        padding: 10px;
+    }
+
+}

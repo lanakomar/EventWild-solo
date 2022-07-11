@@ -68,3 +68,32 @@
 .my-events-container .event-container:nth-child(odd) .button {
         background-color: rgb(244, 199, 154);
 }
+
+@media screen and (max-width: 450px) {
+    .wrapper {
+        height: auto;
+        padding-bottom: 10px;
+    }
+
+    .events-header {
+        display: flex;
+        flex-direction: column;
+        font-size: smaller;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        gap: 5px;
+    }
+
+    .event-container {
+        display: flex;
+        flex-direction: column;
+        font-size: smaller;
+        height: auto;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .event-container .button {
+        display: inline-block;
+    }
+}

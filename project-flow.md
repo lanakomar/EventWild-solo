@@ -213,8 +213,10 @@ npx sequelize seed:generate --name ticketData
 
 //update all the seed files with seed data
 
-npx dotenv sequelize db:seed:all
 npx dotenv sequelize db:seed:undo:all
+npx dotenv sequelize db:migrate:undo:all
+npx dotenv sequelize db:migrate
+npx dotenv sequelize db:seed:all
 
 
 

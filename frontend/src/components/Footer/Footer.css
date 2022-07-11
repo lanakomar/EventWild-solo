@@ -74,3 +74,27 @@
     background-image: url("/public/images/logos/git-logo.png");
     background-size: contain;
 }
+
+
+@media screen and (max-width: 450px) {
+    .footer {
+        height: 30px;
+    }
+
+    .footer div {
+        height: 30px;
+    }
+
+    .footer .logo-tech {
+        width: 25px;
+        height: 25px;
+    }
+
+    .footer .node {
+        width: 35px;
+    }
+
+    .footer .postgres {
+        width: 60px;
+    }
+}

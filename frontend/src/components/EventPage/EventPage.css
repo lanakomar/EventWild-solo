@@ -135,3 +135,31 @@
 .available-tickets i {
     margin-right: 10px;
 }
+
+
+@media screen and (max-width: 450px) {
+    .event-page-header {
+        flex-direction: column;
+        padding: 10px 30px;
+    }
+
+    .event-page {
+        width: 80%;
+        margin: 15px auto;
+        padding: 0 10px;
+    }
+
+    .info-container {
+        gap: 35px;
+    }
+
+    .event-page-main {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .event-page-main-right {
+        gap: 20px;
+    }
+}
