@@ -52,6 +52,7 @@ nav > div {
     padding: 0 10px;
     height: 100%;
     padding-bottom: 5px;
+    text-align: center;
 }
 
 
@@ -95,6 +96,10 @@ nav > div {
     justify-content: center;
 }
 
+.loggedin-user p {
+    text-align: center;
+}
+
 .loggedin-user span {
     margin-left: 10px;
     color: rgba(0, 0, 0, 0.679);
@@ -124,6 +129,7 @@ nav > div {
     list-style: none;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    z-index: 3;
 }
 
 .profile-dropdown li {
@@ -154,6 +160,18 @@ nav > div {
     color: black;
 }
 
+
+@media screen and (max-width: 617px) {
+    nav .logo {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 502px) {
+    .user-btn {
+        display: none;
+    }
+}
 
 @media screen and (max-width: 450px) {
     nav .logo {

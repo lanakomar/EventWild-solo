@@ -1,5 +1,7 @@
 .wrapper {
-    height: 100%;
+    height: fit-content;
+    position: relative;
+    padding-top: 10px;
 }
 
 .my-events-container {
@@ -14,7 +16,7 @@
 
 .background {
     width: 100%;
-    height: 100%;
+    height: -webkit-fill-available;
     position: absolute;
     top: 0;
     left: 0;
@@ -66,7 +68,7 @@
 }
 
 .my-events-container .event-container:nth-child(odd) .button {
-        background-color: rgb(244, 199, 154);
+    background-color: rgb(244, 199, 154);
 }
 
 @media screen and (max-width: 450px) {
@@ -98,24 +100,24 @@
     }
 }
 
-@media  screen and (max-width: 1230px) {
+@media screen and (max-width: 1230px) {
     .event-container {
         height: 90px;
     }
 
-    .background {
+    /* .background {
         height: 110%;
-    }
+    } */
 }
 
 @media screen and (max-width: 1120px) {
     .event-container {
-            height: 100px;
-        }
+        height: 100px;
+    }
 
-        .background {
-            height: 114%;
-        }
+    /* .background {
+        height: 114%;
+    } */
 }
 
 @media screen and (max-width: 1044px) {
@@ -126,29 +128,67 @@
 }
 
 @media screen and (max-width: 927px) {
-    .wrapper {
+    /* .wrapper {
         height: 110%;
-    }
+    } */
 
     .events-header {
         padding-top: 5px;
     }
 
-    .background {
+    /* .background {
         height: 120%;
-    }
+    } */
 }
 
 @media screen and (max-width: 848px) {
     .wrapper {
-        height: 115%;
+        /* height: 115%; */
+        padding-top: 5px;
     }
 
     .event-container {
-            height: 116px;
-        }
+        height: 116px;
+    }
 
-        .background {
-            height: 123%;
-        }
+    /* .background {
+        height: 123%;
+    } */
+}
+
+/* @media screen and (max-width: 838px) {
+    .wrapper {
+        height: 120%
+    }
+
+    .background {
+        height: 130%;
+    }
+} */
+
+@media screen and (max-width: 779px) {
+    .wrapper,
+    .my-events-container {
+        height: fit-content;
+    }
+
+    /* .wrapper {
+        position: relative;
+    } */
+
+    .event-container {
+        grid-template-columns: none;
+        row-gap: 10px;
+        column-gap: 0;
+        padding: 10px;
+        height: fit-content;
+    }
+
+    .events-header {
+        display: none;
+    }
+
+    /* .background {
+        height: -webkit-fill-available;
+    } */
 }
