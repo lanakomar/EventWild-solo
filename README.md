@@ -33,7 +33,7 @@ EventWild is a full stack application that allows users to browse and reserve ti
 ### Tickets
   - Reserve a ticket/tickets for an event
   - Cancel ticket/tickets reservation
-***  
+***
 
 <h4 align= "center">Main Page</h4>
 <img width="1346" alt="Screen Shot 2022-07-11 at 12 32 07 PM" src="https://user-images.githubusercontent.com/97191078/178343945-d9588109-80e7-414d-bf9c-0d05c651371f.png">
@@ -56,7 +56,7 @@ EventWild is a full stack application that allows users to browse and reserve ti
 - Then use the 'npx dotenv sequelize [suffix]' command with each suffix in order: 'create:db', 'db:migrate', 'db:seed:all'
 - Start server:
     1. cd into backend folder, run npm start;
-    2. cd into frintend folder, run npm start
+    2. cd into frontend folder, run npm start
 ***
 
 ## Application Architecture
