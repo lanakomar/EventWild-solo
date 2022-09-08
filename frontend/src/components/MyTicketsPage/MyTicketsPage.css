@@ -54,15 +54,16 @@
     background-color: rgb(244, 199, 154);
 }
 
-
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 779px) {
     .tickets-header {
-        margin-top: 10px;
+        display: none;
     }
 
     .ticket-container {
-        height: auto;
+        grid-template-columns: none;
+        row-gap: 10px;
+        column-gap: 0;
         padding: 10px;
+        height: fit-content;
     }
-
 }
