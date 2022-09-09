@@ -938,3 +938,16 @@ Ticket data
 
 
 to see error logs in sequelize logs:  in config - database.js - development: logging: true
+
+
+deploying to heroku:
+
+1 make sure that logged in
+heroku login
+
+2 add all and commit changes
+git add .
+git commit -m "..."
+
+2 push to heroku
+git push heroku main:master
